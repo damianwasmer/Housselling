@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="House")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class House {
 
 	@Id
@@ -82,7 +84,13 @@ public class House {
 	public void setOwner(Owner owner) {
 		this.owner = owner;
 	}
-	
+		
+	//toString
+	@Override
+	public String toString() {
+		return "House [id=" + id + ", street=" + street + ", number=" + number + ", description=" + description
+				+ ", owner=" + owner + "]";
+	}
 	
 	
 }

@@ -71,5 +71,9 @@ public class Owner {
 		this.houses = houses;
 	}
 	
-	
+	//toString
+	@Override
+	public String toString() {
+		return "Owner [id=" + id + ", lastname=" + lastname + ", firstname=" + firstname + ", houses=" + houses + "]";
+	}
 }
