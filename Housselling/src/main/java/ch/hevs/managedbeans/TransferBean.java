@@ -36,7 +36,7 @@ public class TransferBean
     	
     	// use JNDI to inject reference to houseselling EJB
     	InitialContext ctx = new InitialContext();
-		//houseselling = (houseselling) ctx.lookup("java:global/Housselling/HousesellingBean!ch.hevs.housesellingservice.Houseselling");
+		houseselling = (Houseselling) ctx.lookup("java:global/Housselling/HousesellingBean!ch.hevs.housesellingservice.Houseselling");
 			
     	// get owners
 		List<Owner> ownerList = houseselling.getOwners();
