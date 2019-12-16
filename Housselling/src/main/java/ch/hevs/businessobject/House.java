@@ -30,6 +30,10 @@ public class House {
 	@JoinColumn(name = "FK_OWNER")
 	private Owner owner;
 	
+	@ManyToOne
+	@JoinColumn(name = "FK_LOCATION")
+	private Location location;
+	
 	// constructors
 		public House() {
 		}

@@ -24,8 +24,8 @@ public class Location {
 	private String postCode;
 
 	// relations
-	//@OneToMany(mappedBy = "house", cascade = CascadeType.ALL)//@JoinColumn(name = "FK_CLIENT")
-	//private List<House> houses;
+	@OneToMany(mappedBy = "location", cascade = CascadeType.ALL)//@JoinColumn(name = "FK_CLIENT")
+	private List<House> houses;
 
 	//id
 	public long getId() {
@@ -55,14 +55,14 @@ public class Location {
 	}
 
 	//houses
-	/*
+	
 	public List<House> getHouses() {
 		return houses;
 	}
 
 	public void setHouses(List<House> houses) {
 		this.houses = houses;
-	}*/
+	}
 
 	public Location() {
 		
