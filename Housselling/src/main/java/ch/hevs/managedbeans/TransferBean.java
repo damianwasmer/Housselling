@@ -8,9 +8,9 @@ import javax.faces.event.ValueChangeEvent;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import ch.hevs.bankservice.Bank;
-import ch.hevs.businessobject.Account;
-import ch.hevs.businessobject.Client;
+import ch.hevs.businessobject.House;
+import ch.hevs.businessobject.Owner;
+import ch.hevs.housesellingservice.Houseselling;
 
 /**
  * TransferBean.java
@@ -19,38 +19,38 @@ import ch.hevs.businessobject.Client;
 
 public class TransferBean
 {
-    private List<Client> clients;
-    private List<String> clientNames;
-    private List<String> sourceAccountDescriptions;
-    private List<String> destinationAccountDescriptions;
-    private String sourceAccountDescription;
-    private String destinationAccountDescription;
-    private String sourceClientName;
-    private String destinationClientName;
+    private List<Owner> owners;
+    private List<String> ownerNames;
+    private List<String> sourceHouseDescriptions;
+    private List<String> destinationHouseDescriptions;
+    private String sourceHouseDescription;
+    private String destinationHouseDescription;
+    private String sourceownerName;
+    private String destinationownerName;
     private String transactionResult;
     private int transactionAmount;
-    private Bank bank;
+    private Houseselling houseselling;
     
     @PostConstruct
     public void initialize() throws NamingException {
     	
-    	// use JNDI to inject reference to bank EJB
+    	// use JNDI to inject reference to houseselling EJB
     	InitialContext ctx = new InitialContext();
-		bank = (Bank) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/BankBean!ch.hevs.bankservice.Bank");
+		//houseselling = (houseselling) ctx.lookup("java:global/Housselling/HousesellingBean!ch.hevs.housesellingservice.Houseselling");
 			
-    	// get clients
-		List<Client> clientList = bank.getClients();
-		this.clientNames = new ArrayList<String>();
-		for (Client client : clientList) {
-			this.clientNames.add(client.getLastname());
+    	// get owners
+		List<Owner> ownerList = houseselling.getOwners();
+		this.ownerNames = new ArrayList<String>();
+		for (Owner owner : ownerList) {
+			this.ownerNames.add(owner.getLastname());
 		}
 		
-		// initialize account descriptions
-		this.sourceAccountDescriptions = new ArrayList<String>();
-		this.destinationAccountDescriptions = new ArrayList<String>();
-		List<Account> accounts = bank.getAccountListFromClientLastname(clientList.get(0).getLastname());
-		this.sourceAccountDescriptions.add(accounts.get(0).getDescription());
-		this.destinationAccountDescriptions.add(accounts.get(0).getDescription());
+		// initialize House descriptions
+		this.sourceHouseDescriptions = new ArrayList<String>();
+		this.destinationHouseDescriptions = new ArrayList<String>();
+		List<House> Houses = houseselling.getHouseListFromOwnerLastname(ownerList.get(0).getLastname());
+		this.sourceHouseDescriptions.add(Houses.get(0).getDescription());
+		this.destinationHouseDescriptions.add(Houses.get(0).getDescription());
     }
     
     // transactionAmount
@@ -61,30 +61,30 @@ public class TransferBean
     	this.transactionAmount=transactionAmount;
     }
     
-    // sourceClientName
-    public String getSourceClientName () {
-    	return sourceClientName;
+    // sourceownerName
+    public String getSourceownerName () {
+    	return sourceownerName;
     }
-    public void setSourceClientName (final String sourceClientName) {
-    	this.sourceClientName=sourceClientName;
-    }
-    
-    // sourceAccountDescriptions
-    public List<String> getSourceAccountDescriptions () {
-    	return sourceAccountDescriptions;
+    public void setSourceownerName (final String sourceownerName) {
+    	this.sourceownerName=sourceownerName;
     }
     
-    // destinationAccountDescriptions
-    public List<String> getDestinationAccountDescriptions () {
-    	return destinationAccountDescriptions;
+    // sourceHouseDescriptions
+    public List<String> getSourceHouseDescriptions () {
+    	return sourceHouseDescriptions;
     }
     
-    // destinationClientName
-    public String getDestinationClientName () {
-    	return destinationClientName;
+    // destinationHouseDescriptions
+    public List<String> getDestinationHouseDescriptions () {
+    	return destinationHouseDescriptions;
     }
-    public void setDestinationClientName (final String destinationClientName) {
-    	this.destinationClientName=destinationClientName;
+    
+    // destinationownerName
+    public String getDestinationownerName () {
+    	return destinationownerName;
+    }
+    public void setDestinationownerName (final String destinationownerName) {
+    	this.destinationownerName=destinationownerName;
     }
     
     // transactionResult
@@ -95,65 +95,65 @@ public class TransferBean
 		this.transactionResult = transactionResult;
 	}
     
-	// sourceAccountDescription
-    public String getSourceAccountDescription() {
-		return sourceAccountDescription;
+	// sourceHouseDescription
+    public String getSourceHouseDescription() {
+		return sourceHouseDescription;
 	}
-	public void setSourceAccountDescription(String sourceAccountDescription) {
-		this.sourceAccountDescription = sourceAccountDescription;
-	}
-
-	// destinationAccountDescription
-	public String getDestinationAccountDescription() {
-		return destinationAccountDescription;
-	}
-	public void setDestinationAccountDescription(
-			String destinationAccountDescription) {
-		this.destinationAccountDescription = destinationAccountDescription;
+	public void setSourceHouseDescription(String sourceHouseDescription) {
+		this.sourceHouseDescription = sourceHouseDescription;
 	}
 
-	public void updateSourceAccounts(ValueChangeEvent event) {
-    	this.sourceClientName = (String)event.getNewValue();
+	// destinationHouseDescription
+	public String getDestinationHouseDescription() {
+		return destinationHouseDescription;
+	}
+	public void setDestinationHouseDescription(
+			String destinationHouseDescription) {
+		this.destinationHouseDescription = destinationHouseDescription;
+	}
+
+	public void updateSourceHouses(ValueChangeEvent event) {
+    	this.sourceownerName = (String)event.getNewValue();
     	
-	    List<Account> accounts = bank.getAccountListFromClientLastname(this.sourceClientName);
-	    this.sourceAccountDescriptions = new ArrayList<String>();
-		for (Account account : accounts) {
-			this.sourceAccountDescriptions.add(account.getDescription());
+	    List<House> Houses = houseselling.getHouseListFromOwnerLastname(this.sourceownerName);
+	    this.sourceHouseDescriptions = new ArrayList<String>();
+		for (House House : Houses) {
+			this.sourceHouseDescriptions.add(House.getDescription());
 		}
     }
-	public void updateDestinationAccounts(ValueChangeEvent event) {
-    	this.destinationClientName = (String)event.getNewValue();
+	public void updateDestinationHouses(ValueChangeEvent event) {
+    	this.destinationownerName = (String)event.getNewValue();
 			
-	    List<Account> accounts = bank.getAccountListFromClientLastname(this.destinationClientName);
-	    this.destinationAccountDescriptions = new ArrayList<String>();
-		for (Account account : accounts) {
-			this.destinationAccountDescriptions.add(account.getDescription());
+	    List<House> Houses = houseselling.getHouseListFromOwnerLastname(this.destinationownerName);
+	    this.destinationHouseDescriptions = new ArrayList<String>();
+		for (House House : Houses) {
+			this.destinationHouseDescriptions.add(House.getDescription());
 		}
     }
 
-    public List<Client> getClients() {
-		return clients;
+    public List<Owner> getOwners() {
+		return owners;
     }
     
-    public List<String> getClientNames() {
-    	return clientNames;
+    public List<String> getOwnerNames() {
+    	return ownerNames;
     }
     
     
-    public String performTransfer() {
+    /*public String performTransfer() {
     	
     	try {
-			if (sourceClientName.equals(destinationClientName) && sourceAccountDescription.equals(destinationAccountDescription)) {
+			if (sourceownerName.equals(destinationownerName) && sourceHouseDescription.equals(destinationHouseDescription)) {
 				
-				this.transactionResult="Error: accounts are identical!";
+				this.transactionResult="Error: Houses are identical!";
 			} 
 			else {
 				
-				Account compteSrc = bank.getAccount(sourceAccountDescription, sourceClientName);
-				Account compteDest = bank.getAccount(destinationAccountDescription, destinationClientName);
+				House compteSrc = houseselling.getHouse(sourceHouseDescription, sourceownerName);
+				House compteDest = houseselling.getHouse(destinationHouseDescription, destinationownerName);
 	
 				// Transfer
-				bank.transfer(compteSrc, compteDest, transactionAmount);
+				houseselling.transfer(compteSrc, compteDest, transactionAmount);
 				this.transactionResult="Success!";
 			}
     	} catch (Exception e) {
@@ -161,5 +161,5 @@ public class TransferBean
     	}
 
 		return "showTransferResult"; //  the String value returned represents the outcome used by the navigation handler to determine what page to display next.
-	} 
+	} */
 }
