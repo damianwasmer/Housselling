@@ -5,11 +5,13 @@
                 http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 
-	<persistence-unit name="bankPU">
+	<persistence-unit name="HousesellingPU">
 		<jta-data-source>java:/labsDS</jta-data-source>
-		
-		<class>ch.hevs.businessobject.Client</class>
-		<class>ch.hevs.businessobject.Account</class>
+		<class>ch.hevs.businessobject.Chalet</class>
+		<class>ch.hevs.businessobject.House</class>
+		<class>ch.hevs.businessobject.Location</class>
+		<class>ch.hevs.businessobject.Owner</class>
+		<class>ch.hevs.businessobject.Villa</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" /> 
