@@ -38,11 +38,12 @@ public class House {
 		public House() {
 		}
 		public House(String street, int number, Owner owner,
-				String description) {
+				String description, Location location) {
 			this.street = street;
 			this.number = number;
 			this.owner = owner;
 			this.description = description;
+			this.location = location;
 		}
 
 	//id
