@@ -140,7 +140,7 @@ public class TransferBean
     }
     
     
-    /*public String performTransfer() {
+    public String performTransfer() {
     	
     	try {
 			if (sourceownerName.equals(destinationownerName) && sourceHouseDescription.equals(destinationHouseDescription)) {
@@ -161,5 +161,5 @@ public class TransferBean
     	}
 
 		return "showTransferResult"; //  the String value returned represents the outcome used by the navigation handler to determine what page to display next.
-	} */
+	} 
 }

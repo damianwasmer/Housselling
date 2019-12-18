@@ -17,5 +17,8 @@ public interface Houseselling {
 	List<Owner> getOwners();
 
 	Owner getOwner(long Ownerid);
+	
+	void transfer(House compteSrc, House compteDest, int montant) throws Exception;
+
 
 }

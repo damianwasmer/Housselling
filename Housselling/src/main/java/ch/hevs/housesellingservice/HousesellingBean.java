@@ -31,7 +31,8 @@ public class HousesellingBean implements Houseselling {
 
 	@Override
 	public List<House> getHouseListFromOwnerLastname(String lastname) {
-		return (List<House>) em.createQuery("SELECT c.owners FROM Owner c where c.lastname=:lastname").setParameter("lastname", lastname).getResultList();
+		return (List<House>) em.createQuery("SELECT c.owners FROM Owner c where c.lastname=:lastname")
+				.setParameter("lastname", lastname).getResultList();
 	}
 
 	@Override
@@ -43,6 +44,12 @@ public class HousesellingBean implements Houseselling {
 	public Owner getOwner(long ownerId) {
 		return (Owner) em.createQuery("FROM Owner c where c.id=:id").setParameter("id", ownerId).getSingleResult();
 
+	}
+
+	@Override
+	public void transfer(House compteSrc, House compteDest, int montant) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
