@@ -4,12 +4,16 @@ import java.util.List;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 
 import ch.hevs.businessobject.House;
+import ch.hevs.businessobject.Location;
 import ch.hevs.businessobject.Owner;
 
 @Stateful
@@ -17,6 +21,7 @@ public class HousesellingBean implements Houseselling {
 
 	@PersistenceContext(name = "HousesellingPU", type=PersistenceContextType.EXTENDED)
 	private EntityManager em;
+	EntityTransaction tx = null;
 	
 	@Override
 	public House getHouse(String HouseDescription, String lastnameOwner) {
@@ -52,4 +57,54 @@ public class HousesellingBean implements Houseselling {
 		
 	}
 
+	@Override
+	public void addHouse(String houseDescription, String street, int number, Owner owner, Location location) {
+		try {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("HousesellingPU");
+		tx = em.getTransaction();
+		tx.begin();
+		House h = new House();
+		h.setDescription(houseDescription);
+		h.setStreet(street);
+		h.setNumber(number);
+		h.setOwner(owner);
+		h.setLocation(location);
+		em.persist(h);
+		tx.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			try {
+				tx.rollback();
+			}catch(IllegalStateException e1) {
+				e1.printStackTrace();
+			}catch(SecurityException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void addOwner(String firstname, String lastname) {
+		try {
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("HousesellingPU");
+			tx = em.getTransaction();
+			tx.begin();
+			Owner o = new Owner();
+			o.setFirstname(firstname);
+			o.setLastname(lastname);
+			em.persist(o);
+			tx.commit();
+			}catch(Exception e) {
+				e.printStackTrace();
+				try {
+					tx.rollback();
+				}catch(IllegalStateException e1) {
+					e1.printStackTrace();
+				}catch(SecurityException e1) {
+					e1.printStackTrace();
+				}
+			}
+		
+	}
+	
 }

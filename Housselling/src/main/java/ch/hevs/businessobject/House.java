@@ -34,7 +34,8 @@ public class House {
 	@JoinColumn(name = "FK_LOCATION")
 	private Location location;
 	
-	// constructors
+	
+		// constructors
 		public House() {
 		}
 		public House(String street, int number, Owner owner,
@@ -89,6 +90,14 @@ public class House {
 
 	public void setOwner(Owner owner) {
 		this.owner = owner;
+	}
+	
+	//Location
+	public Location getLocation() {
+		return location;
+	}
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 		
 	//toString

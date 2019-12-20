@@ -7,6 +7,7 @@
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
+  <display-name>/welcomeHouseselling.xhtml</display-name>
   <from-view-id>/welcomeHouseselling.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>addOwner</from-outcome>
