@@ -30,6 +30,8 @@ public class TransferBean
     private String transactionResult;
     private int transactionAmount;
     private Houseselling houseselling;
+    private String firstname;
+    private String lastname;
     
     @PostConstruct
     public void initialize() throws NamingException {
@@ -138,9 +140,25 @@ public class TransferBean
     public List<String> getOwnerNames() {
     	return ownerNames;
     }
+        
     
-    
-    public String performTransfer() {
+    public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(final String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(final String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String performTransfer() {
     	
     	try {
 			if (sourceownerName.equals(destinationownerName) && sourceHouseDescription.equals(destinationHouseDescription)) {
@@ -162,4 +180,9 @@ public class TransferBean
 
 		return "showTransferResult"; //  the String value returned represents the outcome used by the navigation handler to determine what page to display next.
 	} 
+    
+    public void addOwner() {
+    	
+    	houseselling.addOwner(firstname, lastname);
+    }
 }
