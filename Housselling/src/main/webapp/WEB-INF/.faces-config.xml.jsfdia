@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#welcomeHouseselling.xhtml"
+  PATH="/welcomeHouseselling.xhtml" SHAPE="60,133,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#welcomeHouseselling.xhtml:0" NAME="item"
+   PATH="/welcomeHouseselling.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="addOwner::#addOwner.xhtml" NAME="output"
+    PATH="/addOwner.xhtml" TARGET="rules:#addOwner.xhtml"
+    TITLE="addOwner" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="showHouses::#showHouses.xhtml"
+    NAME="output1" PATH="/showHouses.xhtml"
+    TARGET="rules:#showHouses.xhtml" TITLE="showHouses" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="transferHouse::#transferHouse.xhtml"
+    NAME="output2" PATH="/transferHouse.xhtml"
+    TARGET="rules:#transferHouse.xhtml" TITLE="transferHouse" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#addOwner.xhtml" PATH="/addOwner.xhtml"
+  SHAPE="272,64,50,25" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#showHouses.xhtml" PATH="/showHouses.xhtml"
+  SHAPE="288,160,50,25" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#transferHouse.xhtml"
+  PATH="/transferHouse.xhtml" SHAPE="304,304,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+</PROCESS>
