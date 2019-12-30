@@ -13,7 +13,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Table(name="House")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class House {
 
 	@Id
@@ -24,6 +24,8 @@ public class House {
 	@Column(name="number")
 	private int number;	
 	private String description;
+	@Column(name="price")
+	private float price;
 	
 	// relations
 	@ManyToOne
@@ -35,17 +37,21 @@ public class House {
 	private Location location;
 	
 	
-		// constructors
-		public House() {
-		}
-		public House(String street, int number, Owner owner,
-				String description, Location location) {
-			this.street = street;
-			this.number = number;
-			this.owner = owner;
-			this.description = description;
-			this.location = location;
-		}
+	// constructors
+	public House() {
+		super();
+	}
+	
+	public House(String street, int number, Owner owner,
+				String description, Location location, float price) {
+		super();
+		this.street = street;
+		this.number = number;
+		this.owner = owner;
+		this.description = description;
+		this.location = location;
+		this.price = price;
+	}
 
 	//id
 	public Long getId() {
@@ -72,6 +78,15 @@ public class House {
 
 	public void setNumber(int number) {
 		this.number = number;
+	}
+	
+	//price
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
 
 	//Description

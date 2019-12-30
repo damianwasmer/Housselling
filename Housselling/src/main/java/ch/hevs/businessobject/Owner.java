@@ -1,5 +1,6 @@
 package ch.hevs.businessobject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,12 +29,16 @@ public class Owner {
 	private List<House> houses;
 	
 	// constructors
-		public Owner() {
-		}
-		public Owner(String lastname, String firstname) {
+	public Owner() {
+		super();
+		houses = new ArrayList<House>();
+	}
+	
+	public Owner(String lastname, String firstname) {
 			this.lastname = lastname;
 			this.firstname = firstname;
-		}
+			houses = new ArrayList<House>();
+	}
 
 	//id
 	public long getId() {
@@ -69,6 +74,14 @@ public class Owner {
 
 	public void setHouses(List<House> houses) {
 		this.houses = houses;
+	}
+	
+	public void addHouse(House house) {
+		houses.add(house);
+	}
+	
+	public void removeHouse(House house) {
+		houses.remove(house);
 	}
 	
 	//toString

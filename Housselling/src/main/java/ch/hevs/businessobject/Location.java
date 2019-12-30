@@ -1,5 +1,6 @@
 package ch.hevs.businessobject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,6 +27,19 @@ public class Location {
 	// relations
 	@OneToMany(mappedBy = "location", cascade = CascadeType.ALL)//@JoinColumn(name = "FK_CLIENT")
 	private List<House> houses;
+	
+	//Constructors
+	public Location() {
+		super();
+		houses = new ArrayList<House>();
+	}
+	
+	public Location(String location, String postCode, List<House> houses) {
+		super();
+		this.location = location;
+		this.postCode = postCode;
+		houses = new ArrayList<House>();
+	}
 
 	//id
 	public long getId() {
@@ -55,7 +69,6 @@ public class Location {
 	}
 
 	//houses
-	
 	public List<House> getHouses() {
 		return houses;
 	}
@@ -63,14 +76,13 @@ public class Location {
 	public void setHouses(List<House> houses) {
 		this.houses = houses;
 	}
-
-	public Location() {
-		
+	
+	public void addHouse(House house) {
+		houses.add(house);
 	}
 	
-	public Location(String location, String postCode) {
-		this.location = location;
-		this.postCode = postCode;
+	public void removeHouse(House house) {
+		houses.remove(house);
 	}
 	
 	@Override
