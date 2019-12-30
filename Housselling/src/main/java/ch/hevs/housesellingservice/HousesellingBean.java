@@ -102,11 +102,12 @@ public class HousesellingBean implements Houseselling {
 	}
 
 	@Override
-	public void addHouse(String houseDescription, String street, int number, Owner owner, Location location) {
+	public void addHouse(String houseDescription, String street, int number, double price, Owner owner, Location location) {
 		House h = new House();
 		h.setDescription(houseDescription);
 		h.setStreet(street);
 		h.setNumber(number);
+		h.setPrice(price);
 		h.setOwner(owner);
 		h.setLocation(location);
 		em.persist(h);

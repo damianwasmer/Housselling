@@ -24,7 +24,7 @@ public interface Houseselling {
 	void addLocation(String location, String postcode);
 	
 	//House
-	void addHouse(String houseDescription, String street, int number, Owner owner, Location location);
+	void addHouse(String houseDescription, String street, int number, double price, Owner owner, Location location);
 	House getHouse(String HouseDescription, String lastnameOwner);
 	List<House> getHouseListFromOwner(String firstname, String lastname);
 	void transfer(House compteSrc, House compteDest, int montant) throws Exception;

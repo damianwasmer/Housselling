@@ -25,7 +25,7 @@ public class House {
 	private int number;	
 	private String description;
 	@Column(name="price")
-	private float price;
+	private double price;
 	
 	// relations
 	@ManyToOne
@@ -43,7 +43,7 @@ public class House {
 	}
 	
 	public House(String street, int number, Owner owner,
-				String description, Location location, float price) {
+				String description, Location location, double price) {
 		super();
 		this.street = street;
 		this.number = number;
@@ -81,11 +81,11 @@ public class House {
 	}
 	
 	//price
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

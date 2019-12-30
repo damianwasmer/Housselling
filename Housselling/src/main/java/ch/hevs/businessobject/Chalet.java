@@ -8,12 +8,12 @@ public class Chalet extends House{
 	
 	//Constructors
 	public Chalet(String street, int number, Owner owner,
-			String description, Location location, float price) {
+			String description, Location location, double price) {
 		super(street, number, owner, description, location, price);
 	}
 	
 	public Chalet(String street, int number, Owner owner,
-			String description, Location location, float price, int nrskirooms) {
+			String description, Location location, double price, int nrskirooms) {
 		super(street, number, owner, description, location, price);
 		this.nrskirooms = nrskirooms;
 	}
