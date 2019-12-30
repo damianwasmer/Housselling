@@ -50,9 +50,9 @@ public class TransferBean
 		// initialize House descriptions
 		this.sourceHouseDescriptions = new ArrayList<String>();
 		this.destinationHouseDescriptions = new ArrayList<String>();
-		List<House> Houses = houseselling.getHouseListFromOwnerLastname(ownerList.get(0).getLastname());
-		this.sourceHouseDescriptions.add(Houses.get(0).getDescription());
-		this.destinationHouseDescriptions.add(Houses.get(0).getDescription());
+		//List<House> Houses = houseselling.getHouseListFromOwnerLastname(ownerList.get(0).getLastname());
+		//this.sourceHouseDescriptions.add(Houses.get(0).getDescription());
+		//this.destinationHouseDescriptions.add(Houses.get(0).getDescription());
     }
     
     // transactionAmount
