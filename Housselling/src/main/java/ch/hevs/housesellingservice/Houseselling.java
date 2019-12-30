@@ -20,6 +20,8 @@ public interface Houseselling {
 	void editOwner(Owner owner);
 	
 	//Location
+	List<Location> getLocations();
+	void addLocation(String location, String postcode);
 	
 	//House
 	void addHouse(String houseDescription, String street, int number, Owner owner, Location location);

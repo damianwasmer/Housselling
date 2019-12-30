@@ -111,9 +111,21 @@ public class HousesellingBean implements Houseselling {
 		h.setLocation(location);
 		em.persist(h);
 	}
-
 	
 	//Location---------------------------------------
+	@Override
+	public List<Location> getLocations() {
+		// TODO Auto-generated method stub
+		return em.createQuery("FROM Location").getResultList();
+	}
 
+	@Override
+	public void addLocation(String location, String postcode) {
+		// TODO Auto-generated method stub
+		Location l = new Location();
+		l.setLocation(location);
+		l.setPostCode(postcode);
+		em.persist(l);
+	}
 
 }
