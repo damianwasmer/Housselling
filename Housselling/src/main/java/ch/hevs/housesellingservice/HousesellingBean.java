@@ -23,6 +23,58 @@ public class HousesellingBean implements Houseselling {
 	private EntityManager em;
 	EntityTransaction tx = null;
 	
+	//Owner-------------------------------------
+	@Override
+	public List<Owner> getOwners() {
+		// TODO Auto-generated method stub
+		return em.createQuery("FROM Owner").getResultList();
+	}
+	
+	@Override
+	public void addOwner(String firstname, String lastname) {
+		// TODO Auto-generated method stub
+		Owner o = new Owner();
+		o.setFirstname(firstname);
+		o.setLastname(lastname);
+		em.persist(o);
+	}
+
+	@Override
+	public Owner getHouseOwner(String firstname, String lastname) {
+		// TODO Auto-generated method stub
+		Query query = em.createQuery("select h.owner from House h where h.firstname = :firstname && h.lastname = :lastname"); 
+		query.setParameter("firstname", firstname);
+		query.setParameter("lastname", lastname); 
+		
+		
+		return (Owner)query.getSingleResult(); 
+	}
+
+	@Override
+	public Owner getOwnerEntity(String firstname, String lastname) {
+		// TODO Auto-generated method stub
+		Query query = em.createQuery("select o from Owner o where o.firstname = :firstname and o.lastname = :lastname");
+		query.setParameter("firstname", firstname);
+		query.setParameter("lastname", lastname); 
+		
+		return (Owner)query.getSingleResult(); 
+	}
+
+	@Override
+	public void deleteOwner(Owner owner) {
+		// TODO Auto-generated method stub
+		Owner ownerdelete = em.merge(owner);
+		em.remove(ownerdelete);
+	}
+
+	@Override
+	public void editOwner(Owner owner) {
+		// TODO Auto-generated method stub
+		em.merge(owner);
+	}
+	
+	
+	//House------------------------------------------
 	@Override
 	public House getHouse(String HouseDescription, String lastnameOwner) {
 		Query query = em.createQuery("FROM House a WHERE a.description=:description AND a.owner.lastname=:lastname");
@@ -35,20 +87,12 @@ public class HousesellingBean implements Houseselling {
 	}
 
 	@Override
-	public List<House> getHouseListFromOwnerLastname(String lastname) {
-		return (List<House>) em.createQuery("SELECT c.owners FROM Owner c where c.lastname=:lastname")
-				.setParameter("lastname", lastname).getResultList();
-	}
-
-	@Override
-	public List<Owner> getOwners() {
-		return em.createQuery("FROM Owner").getResultList();
-	}
-
-	@Override
-	public Owner getOwner(long ownerId) {
-		return (Owner) em.createQuery("FROM Owner c where c.id=:id").setParameter("id", ownerId).getSingleResult();
-
+	public List<House> getHouseListFromOwner(String firstname, String lastname) {
+		Query query = em.createQuery("SELECT c.owners FROM Owner c where c.lastname=:lastname && c.firstname=:firstname");
+		query.setParameter("firstname", firstname);
+		query.setParameter("lastname", lastname);
+		
+		return (List<House>) query.getResultList();
 	}
 
 	@Override
@@ -59,10 +103,6 @@ public class HousesellingBean implements Houseselling {
 
 	@Override
 	public void addHouse(String houseDescription, String street, int number, Owner owner, Location location) {
-		try {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("HousesellingPU");
-		tx = em.getTransaction();
-		tx.begin();
 		House h = new House();
 		h.setDescription(houseDescription);
 		h.setStreet(street);
@@ -70,41 +110,10 @@ public class HousesellingBean implements Houseselling {
 		h.setOwner(owner);
 		h.setLocation(location);
 		em.persist(h);
-		tx.commit();
-		}catch(Exception e) {
-			e.printStackTrace();
-			try {
-				tx.rollback();
-			}catch(IllegalStateException e1) {
-				e1.printStackTrace();
-			}catch(SecurityException e1) {
-				e1.printStackTrace();
-			}
-		}
 	}
 
-	@Override
-	public void addOwner(String firstname, String lastname) {
-		try {
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("HousesellingPU");
-			tx = em.getTransaction();
-			tx.begin();
-			Owner o = new Owner();
-			o.setFirstname(firstname);
-			o.setLastname(lastname);
-			em.persist(o);
-			tx.commit();
-			}catch(Exception e) {
-				e.printStackTrace();
-				try {
-					tx.rollback();
-				}catch(IllegalStateException e1) {
-					e1.printStackTrace();
-				}catch(SecurityException e1) {
-					e1.printStackTrace();
-				}
-			}
-		
-	}
 	
+	//Location---------------------------------------
+
+
 }

@@ -10,19 +10,21 @@ import ch.hevs.businessobject.Owner;
 
 @Local
 public interface Houseselling {
-
-	void addHouse(String houseDescription, String street, int number, Owner owner, Location location);
 	
-	House getHouse(String HouseDescription, String lastnameOwner);
-
-	List<House> getHouseListFromOwnerLastname(String lastname);
-
+	//Owner
 	List<Owner> getOwners();
-
-	Owner getOwner(long Ownerid);
-	
+	Owner getHouseOwner(String firstname, String lastname);
+	Owner getOwnerEntity(String firstname, String lastname);
 	void addOwner(String firstname, String lastname);
+	void deleteOwner(Owner owner);
+	void editOwner(Owner owner);
 	
+	//Location
+	
+	//House
+	void addHouse(String houseDescription, String street, int number, Owner owner, Location location);
+	House getHouse(String HouseDescription, String lastnameOwner);
+	List<House> getHouseListFromOwner(String firstname, String lastname);
 	void transfer(House compteSrc, House compteDest, int montant) throws Exception;
 
 

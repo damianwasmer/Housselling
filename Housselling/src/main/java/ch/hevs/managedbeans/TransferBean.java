@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -41,9 +43,12 @@ public class TransferBean
 		houseselling = (Houseselling) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/HousesellingBean!ch.hevs.housesellingservice.Houseselling");
 			
     	// get owners
-		List<Owner> ownerList = houseselling.getOwners();
+		owners = houseselling.getOwners();
+    	if(owners==null){
+    		owners = new ArrayList<>(); 
+    	}
 		this.ownerNames = new ArrayList<String>();
-		for (Owner owner : ownerList) {
+		for (Owner owner : owners) {
 			this.ownerNames.add(owner.getLastname());
 		}
 		
@@ -117,7 +122,7 @@ public class TransferBean
 	public void updateSourceHouses(ValueChangeEvent event) {
     	this.sourceownerName = (String)event.getNewValue();
     	
-	    List<House> Houses = houseselling.getHouseListFromOwnerLastname(this.sourceownerName);
+	    List<House> Houses = houseselling.getHouseListFromOwner(this.sourceownerName, this.destinationownerName);
 	    this.sourceHouseDescriptions = new ArrayList<String>();
 		for (House House : Houses) {
 			this.sourceHouseDescriptions.add(House.getDescription());
@@ -126,7 +131,7 @@ public class TransferBean
 	public void updateDestinationHouses(ValueChangeEvent event) {
     	this.destinationownerName = (String)event.getNewValue();
 			
-	    List<House> Houses = houseselling.getHouseListFromOwnerLastname(this.destinationownerName);
+	    List<House> Houses = houseselling.getHouseListFromOwner(this.destinationownerName, this.destinationownerName);
 	    this.destinationHouseDescriptions = new ArrayList<String>();
 		for (House House : Houses) {
 			this.destinationHouseDescriptions.add(House.getDescription());
@@ -182,7 +187,11 @@ public class TransferBean
 	} 
     
     public void addOwner() {
-    	
     	houseselling.addOwner(firstname, lastname);
     }
+    
+    public void deleteOwner(Owner owner){
+		houseselling.deleteOwner(owner);
+		owners.remove(owner);
+	}
 }

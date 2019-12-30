@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class Chalet extends House{
-	private boolean skiroom;
+	private int nrskirooms;
 	
 	//Constructors
 	public Chalet(String street, int number, Owner owner,
@@ -13,21 +13,21 @@ public class Chalet extends House{
 	}
 	
 	public Chalet(String street, int number, Owner owner,
-			String description, Location location, float price, boolean skiroom) {
+			String description, Location location, float price, int nrskirooms) {
 		super(street, number, owner, description, location, price);
-		this.skiroom = skiroom;
+		this.nrskirooms = nrskirooms;
 	}
 	
 	public Chalet() {
 		super();
 	}
 
-	public boolean isSkiroom() {
-		return skiroom;
+	public int getNrskirooms() {
+		return nrskirooms;
 	}
 
-	public void setSkiroom(boolean skiroom) {
-		this.skiroom = skiroom;
+	public void setNrskirooms(int nrskirooms) {
+		this.nrskirooms = nrskirooms;
 	}
 		
 }
