@@ -24,6 +24,9 @@ public class BeanHouse {
     private Location location;
     private List<Owner> owners;
     private List<Location> locations;
+    private String firstname;
+    private String lastname;
+    private String city;
     
     @PostConstruct
     public void initialize() throws NamingException {
@@ -111,9 +114,28 @@ public class BeanHouse {
     	this.location = (Location)event.getNewValue();
 			
     }	
+	
+	
+	public String getLastname() {
+		return lastname;
+	}
 
-	public void addHouse() {
-		houseselling.addHouse(houseDescription, street, number, price, owner, location);
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public void addHouse() {		
+		Long idLocation = houseselling.getIdLocation(city);
+		Long idOwner = houseselling.getIdOwner(lastname);
+		houseselling.addHouse(houseDescription, street, number, price, idLocation, idOwner);
 	}
     
     

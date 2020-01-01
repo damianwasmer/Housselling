@@ -26,8 +26,13 @@
    <PROCESS-ITEM-OUTPUT ID="addOwner::#addOwner.xhtml" NAME="output"
     PATH="/addOwner.xhtml" TARGET="rules:#addOwner.xhtml"
     TITLE="addOwner" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addLocation::#addLocation.xhtml"
+    NAME="output1" PATH="/addLocation.xhtml"
+    TARGET="rules:#addLocation.xhtml" TITLE="addLocation" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#addOwner.xhtml" PATH="/addOwner.xhtml"
   SHAPE="463,130,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#addLocation.xhtml" PATH="/addLocation.xhtml"
+  SHAPE="456,184,50,25" model-entity="JSFProcessGroup" persistent="true"/>
 </PROCESS>

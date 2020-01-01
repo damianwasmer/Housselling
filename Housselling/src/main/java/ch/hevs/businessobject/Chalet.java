@@ -7,14 +7,14 @@ public class Chalet extends House{
 	private int nrskirooms;
 	
 	//Constructors
-	public Chalet(String street, int number, Owner owner,
-			String description, Location location, double price) {
-		super(street, number, owner, description, location, price);
+	public Chalet(String street, int number,String description, double price,
+			long idLocation, long idOwner) {
+		super(street, number, description, price, idLocation, idOwner);
 	}
 	
-	public Chalet(String street, int number, Owner owner,
-			String description, Location location, double price, int nrskirooms) {
-		super(street, number, owner, description, location, price);
+	public Chalet(String street, int number,String description, double price,
+			long idLocation, long idOwner, int nrskirooms) {
+		super(street, number, description, price, idLocation, idOwner);
 		this.nrskirooms = nrskirooms;
 	}
 	

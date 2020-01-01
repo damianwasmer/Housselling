@@ -7,14 +7,14 @@ public class Villa extends House {
 	private int nrpools;
 	
 	//Constructors
-	public Villa(String street, int number, Owner owner,
-			String description, Location location, double price) {
-		super(street, number, owner, description, location, price);
+	public Villa(String street, int number,String description, double price,
+			long idLocation, long idOwner) {
+		super(street, number, description, price, idLocation, idOwner);
 	}
 	
-	public Villa(String street, int number, Owner owner,
-			String description, Location location, double price, int nrpools) {
-		super(street, number, owner, description, location, price);
+	public Villa(String street, int number,String description, double price,
+			long idLocation, long idOwner, int nrpools) {
+		super(street, number, description, price, idLocation, idOwner);
 		this.nrpools = nrpools;
 	}
 	

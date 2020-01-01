@@ -46,6 +46,15 @@
 					<h:outputText value="add Owner" />
 				</h:commandLink>
 				
+				<h:outputText value="Location: "></h:outputText>
+	        	<h:selectOneMenu value="#{beanLocation.city}" valueChangeListener="#{beanHouse.updateLocation}" onchange="submit()">
+	        		<f:selectItems value="#{beanLocation.locationNames}"/>
+	        	</h:selectOneMenu>
+	        	
+						<h:commandLink action="addLocation">
+					<h:outputText value="add Location" />
+				</h:commandLink>
+				
 	    	</h:form>
 	    		<h:form>
 	    		<h:commandButton value="Add House"
