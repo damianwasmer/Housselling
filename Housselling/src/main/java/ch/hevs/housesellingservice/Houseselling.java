@@ -15,7 +15,7 @@ public interface Houseselling {
 	List<Owner> getOwners();
 	Owner getHouseOwner(String firstname, String lastname);
 	Owner getOwnerEntity(String firstname, String lastname);
-	//Owner getOwnerLastname(String lastname);
+	Owner getOwnerLastname(String lastname);
 	long getIdOwner(String lastname);
 	void addOwner(String firstname, String lastname);
 	void deleteOwner(Owner owner);
@@ -24,12 +24,12 @@ public interface Houseselling {
 	//Location
 	List<Location> getLocations();
 	long getIdLocation(String city);
-	//Location getLocation(String location);
+	Location getLocation(String location);
 	void addLocation(String location, String postcode);
 	void deleteLocation(Location location);
 	
 	//House
-	void addHouse(String houseDescription, String street, int number, double price, long idLocation, long idOwner);
+	void addHouse(String houseDescription, String street, int number, double price, Location location, Owner owner);
 	House getHouse(String HouseDescription, String lastnameOwner);
 	List<House> getHouseListFromOwner(String firstname, String lastname);
 	void transfer(House compteSrc, House compteDest, int montant) throws Exception;

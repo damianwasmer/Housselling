@@ -31,11 +31,11 @@ public class House {
 	// relations
 	@ManyToOne(targetEntity = Owner.class)
 	@JoinColumn(name = "FK_OWNER")
-	private long idOwner;
+	private Owner owner;
 	
 	@ManyToOne(targetEntity = Location.class)
 	@JoinColumn(name = "FK_LOCATION")
-	private long idLocation;
+	private Location location;
 	
 	
 	// constructors
@@ -44,13 +44,13 @@ public class House {
 	}
 	
 	public House(String street, int number,String description, double price,
-			long idLocation, long idOwner) {
+			Location location, Owner owner) {
 		super();
 		this.street = street;
 		this.number = number;
-		this.idOwner = idOwner;
+		this.owner = owner;
 		this.description = description;
-		this.idLocation = idLocation;
+		this.location = location;
 		this.price = price;
 	}
 
@@ -99,30 +99,28 @@ public class House {
 		this.description = description;
 	}
 
-	public long getIdOwner() {
-		return idOwner;
+
+	public Owner getOwner() {
+		return owner;
 	}
 
-	public void setIdOwner(long idOwner) {
-		this.idOwner = idOwner;
+	public void setOwner(Owner owner) {
+		this.owner = owner;
 	}
 
-	public long getIdLocation() {
-		return idLocation;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setIdLocation(long idLocation) {
-		this.idLocation = idLocation;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	@Override
 	public String toString() {
 		return "House [id=" + id + ", street=" + street + ", number=" + number + ", description=" + description
-				+ ", price=" + price + ", idOwner=" + idOwner + ", idLocation=" + idLocation + "]";
+				+ ", price=" + price + ", owner=" + owner + ", location=" + location + "]";
 	}
-
-
-		
 	
 	
 }

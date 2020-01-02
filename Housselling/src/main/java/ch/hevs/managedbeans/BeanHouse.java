@@ -106,15 +106,14 @@ public class BeanHouse {
 	}
 	
 	public void updateOwner(ValueChangeEvent event) {
-    	this.owner = (Owner)event.getNewValue();
+    	//this.owner = (Owner)event.getNewValue();
 			
     }
 	
 	public void updateLocation(ValueChangeEvent event) {
-    	this.location = (Location)event.getNewValue();
+    	//this.location = (Location)event.getNewValue();
 			
     }	
-	
 	
 	public String getLastname() {
 		return lastname;
@@ -133,11 +132,9 @@ public class BeanHouse {
 	}
 
 	public void addHouse() {		
-		Long idLocation = houseselling.getIdLocation("Embd");
-		Long idOwner = houseselling.getIdOwner("Test");
-		//Long idOwner = (long) 1;
-		//Long idLocation = (long) 1;
-		houseselling.addHouse(houseDescription, street, number, price, idLocation, idOwner);
+		Owner owner = houseselling.getOwnerLastname("Wasmer");
+		Location location = houseselling.getLocation("Embd");
+		houseselling.addHouse(houseDescription, street, number, price, location, owner);
 	}
     
     

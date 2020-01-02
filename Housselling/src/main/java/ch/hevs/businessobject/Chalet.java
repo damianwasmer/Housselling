@@ -8,13 +8,13 @@ public class Chalet extends House{
 	
 	//Constructors
 	public Chalet(String street, int number,String description, double price,
-			long idLocation, long idOwner) {
-		super(street, number, description, price, idLocation, idOwner);
+			Location location, Owner owner) {
+		super(street, number, description, price, location, owner);
 	}
 	
 	public Chalet(String street, int number,String description, double price,
-			long idLocation, long idOwner, int nrskirooms) {
-		super(street, number, description, price, idLocation, idOwner);
+			Location location, Owner owner, int nrskirooms) {
+		super(street, number, description, price, location, owner);
 		this.nrskirooms = nrskirooms;
 	}
 	

@@ -102,14 +102,14 @@ public class HousesellingBean implements Houseselling {
 	}
 
 	@Override
-	public void addHouse(String houseDescription, String street, int number, double price, long idLocation, long idOwner) {
+	public void addHouse(String houseDescription, String street, int number, double price, Location location, Owner owner) {
 		House h = new House();
 		h.setDescription(houseDescription);
 		h.setStreet(street);
 		h.setNumber(number);
 		h.setPrice(price);
-		h.setIdLocation(idLocation);
-		h.setIdOwner(idOwner);
+		h.setLocation(location);
+		h.setOwner(owner);
 		em.persist(h);
 	}
 	
@@ -154,7 +154,7 @@ public class HousesellingBean implements Houseselling {
 		em.remove(locationdelete);
 	}
 
-	/*@Override
+	@Override
 	public Location getLocation(String city) {
 		Query query = em.createQuery("FROM Location c WHERE c.city=:city");
 		query.setParameter("city", city);
@@ -173,7 +173,7 @@ public class HousesellingBean implements Houseselling {
 		Owner owner = (Owner)query.getSingleResult();
 		System.out.println("ID Owner called from getOwnerLastname(): "+owner.getId());
 		return owner;
-	}*/
+	}
 	
 
 }
