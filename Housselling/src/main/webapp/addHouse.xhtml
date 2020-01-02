@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+    	<div class="container">
+	    	<h:form>
+	    		<h1>Add new house</h1>
+    		       	<h:outputLabel value="House Information:"></h:outputLabel>
+       				<br></br>
+       				<h:outputText value="House Description"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanHouse.houseDescription}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
+							</h:inputText>
+							
+       				<h:outputText value="Street"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanHouse.street}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
+					</h:inputText>
+					
+					<h:outputText value="Number"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanHouse.number}">
+					</h:inputText>
+					
+					<h:outputText value="Price"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanHouse.price}">
+								
+					</h:inputText>
+					
+					<h:outputText value="source: "></h:outputText>
+        		<h:outputText value="Owner: "></h:outputText>
+	        	<h:selectOneMenu value="#{beanOwner.name}" valueChangeListener="#{beanHouse.updateOwner}" onchange="submit()">
+	        		<f:selectItems value="#{beanOwner.ownerNames}"/>
+	        	</h:selectOneMenu>
+	        	
+						<h:commandLink action="addOwner">
+					<h:outputText value="add Owner" />
+				</h:commandLink>
+				
+				<h:outputText value="Location: "></h:outputText>
+	        	<h:selectOneMenu value="#{beanLocation.city}" valueChangeListener="#{beanHouse.updateLocation}" onchange="submit()">
+	        		<f:selectItems value="#{beanLocation.locationNames}"/>
+	        	</h:selectOneMenu>
+	        	
+						<h:commandLink action="addLocation">
+					<h:outputText value="add Location" />
+				</h:commandLink>
+				
+	    	</h:form>
+	    		<h:form>
+	    		<h:commandButton value="Add House"
+								action="#{beanHouse.addHouse}">
+					</h:commandButton>
+				<h:commandLink action="welcomeHouseselling">
+					<h:outputText value="Mainpage" />
+				</h:commandLink>
+			
+			</h:form>
+    	</div>
+    </ui:define>
+</ui:composition>
+    
+</html>

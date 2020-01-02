@@ -10,21 +10,21 @@
     <ui:define name="content">
     	<div class="container">
 	    	<h:form>
-	    		<h1>Add new Owner</h1>
+	    		<h1>Add new Location</h1>
     		       	<h:outputLabel value="House Information:"></h:outputLabel>
        				<br></br>
-       				<h:outputText value="Firstname"></h:outputText>
+       				<h:outputText value="City:"></h:outputText>
        				<h:inputText size="20"
-								value="#{beanOwner.firstname}">
+								value="#{beanLocation.location}">
 								<f:validateRegex pattern="[A-Z][a-z]*" />
 							</h:inputText>
-       				<h:outputText value="Lastname"></h:outputText>
+       				<h:outputText value="Postcode:"></h:outputText>
        				<h:inputText size="20"
-								value="#{beanOwner.lastname}">
-								<f:validateRegex pattern="[A-Z][a-z]*" />
+								value="#{beanLocation.postcode}">
+								
 					</h:inputText>
-					<h:commandButton value="Add Owner"
-								action="#{beanOwner.addOwner}">
+					<h:commandButton value="Add Location"
+								action="#{beanLocation.addLocation}">
 					</h:commandButton>
 	    	</h:form>
 	    		<h:form>

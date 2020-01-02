@@ -102,13 +102,14 @@ public class HousesellingBean implements Houseselling {
 	}
 
 	@Override
-	public void addHouse(String houseDescription, String street, int number, Owner owner, Location location) {
+	public void addHouse(String houseDescription, String street, int number, double price, long idLocation, long idOwner) {
 		House h = new House();
 		h.setDescription(houseDescription);
 		h.setStreet(street);
 		h.setNumber(number);
-		h.setOwner(owner);
-		h.setLocation(location);
+		h.setPrice(price);
+		h.setIdLocation(idLocation);
+		h.setIdOwner(idOwner);
 		em.persist(h);
 	}
 	
@@ -120,12 +121,52 @@ public class HousesellingBean implements Houseselling {
 	}
 
 	@Override
-	public void addLocation(String location, String postcode) {
+	public void addLocation(String city, String postcode) {
 		// TODO Auto-generated method stub
 		Location l = new Location();
-		l.setLocation(location);
+		l.setCity(city);
 		l.setPostCode(postcode);
 		em.persist(l);
 	}
+
+	@Override
+	public long getIdOwner(String lastname) {
+		Query query = em.createQuery("FROM Owner o WHERE o.lastname=:lastname");
+		query.setParameter("lastname", lastname);
+		
+		Owner owner = (Owner)query.getSingleResult();
+		return owner.getId();
+	}
+
+	@Override
+	public long getIdLocation(String city) {
+		Query query = em.createQuery("FROM Location l WHERE l.city=:city");
+		query.setParameter("city", city);
+		
+		Location location = (Location)query.getSingleResult();
+		return location.getId();
+	}
+
+	/*@Override
+	public Location getLocation(String city) {
+		Query query = em.createQuery("FROM Location c WHERE c.city=:city");
+		query.setParameter("city", city);
+		
+		Location location = (Location)query.getSingleResult();
+		System.out.println("ID House called from getLocation(): "+location.getId());
+		return location;
+		
+	}
+
+	@Override
+	public Owner getOwnerLastname(String lastname) {
+		Query query = em.createQuery("FROM Owner o WHERE o.lastname=:lastname");
+		query.setParameter("lastname", lastname);
+		
+		Owner owner = (Owner)query.getSingleResult();
+		System.out.println("ID Owner called from getOwnerLastname(): "+owner.getId());
+		return owner;
+	}*/
+	
 
 }

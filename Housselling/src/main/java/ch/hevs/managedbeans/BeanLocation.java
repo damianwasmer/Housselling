@@ -8,14 +8,17 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import ch.hevs.businessobject.Location;
+import ch.hevs.businessobject.Owner;
 import ch.hevs.housesellingservice.Houseselling;
 
 public class BeanLocation {
 
 	private Houseselling houseselling;
+	private String city;
     private String location;
     private String postcode;
     private List<Location> locations;
+    private List<String> locationNames;
     
     @PostConstruct
     public void initialize() throws NamingException {
@@ -29,8 +32,26 @@ public class BeanLocation {
 		if(locations==null){
 			locations = new ArrayList<>(); 
     	}
+		this.locationNames = new ArrayList<String>();
+		for (Location location : locations) {
+			this.locationNames.add(location.getCity());
+		}
     }
+    
+    
         
+	public List<String> getLocationNames() {
+		return locationNames;
+	}
+
+
+
+	public void setLocationNames(List<String> locationNames) {
+		this.locationNames = locationNames;
+	}
+
+
+
 	public Houseselling getHouseselling() {
 		return houseselling;
 	}
@@ -52,8 +73,15 @@ public class BeanLocation {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
 
+	public String getCity() {
+		return city;
+	}
 
+	public void setCity(String city) {
+		this.city = city;
+	}
 
 	public String getPostcode() {
 		return postcode;
@@ -82,5 +110,7 @@ public class BeanLocation {
 	public void addLocation() {
     	houseselling.addLocation(location, postcode);
     }
+	
+	
 
 }

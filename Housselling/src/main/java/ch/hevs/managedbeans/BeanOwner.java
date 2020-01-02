@@ -13,8 +13,10 @@ import ch.hevs.housesellingservice.Houseselling;
 public class BeanOwner {
 	
     private Houseselling houseselling;
+    private String name;
     private String firstname;
     private String lastname;
+    private List<String> ownerNames;
     private List<Owner> owners;
     
     @PostConstruct
@@ -29,9 +31,44 @@ public class BeanOwner {
 		if(owners==null){
     		owners = new ArrayList<>(); 
     	}
+		this.ownerNames = new ArrayList<String>();
+		for (Owner owner : owners) {
+			this.ownerNames.add(owner.getLastname());
+		}
     }
     
-    public List<Owner> getOwners() {
+    
+    
+    public List<String> getOwnerNames() {
+		return ownerNames;
+	}
+
+
+
+	public void setOwnerNames(List<String> ownerNames) {
+		this.ownerNames = ownerNames;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public void setOwners(List<Owner> owners) {
+		this.owners = owners;
+	}
+
+
+
+	public List<Owner> getOwners() {
 		return owners;
     }
     
@@ -63,5 +100,14 @@ public class BeanOwner {
     	
     	houseselling.addOwner(firstname, lastname);
     }
+
+
+
+	@Override
+	public String toString() {
+		return " firstname" + " " + "lastname";
+	}
+	
+	
 
 }

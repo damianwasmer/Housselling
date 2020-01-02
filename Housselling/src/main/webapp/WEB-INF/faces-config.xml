@@ -4,14 +4,29 @@
  <managed-bean>
   <managed-bean-name>transferBean</managed-bean-name>
   <managed-bean-class>ch.hevs.managedbeans.TransferBean</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>beanOwner</managed-bean-name>
+  <managed-bean-class>ch.hevs.managedbeans.BeanOwner</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>beanHouse</managed-bean-name>
+  <managed-bean-class>ch.hevs.managedbeans.BeanHouse</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>beanLocation</managed-bean-name>
+  <managed-bean-class>ch.hevs.managedbeans.BeanLocation</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
   <display-name>/welcomeHouseselling.xhtml</display-name>
   <from-view-id>/welcomeHouseselling.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>addOwner</from-outcome>
-   <to-view-id>/addOwner.xhtml</to-view-id>
+   <from-outcome>addHouse</from-outcome>
+   <to-view-id>/addHouse.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>showHouses</from-outcome>
@@ -20,6 +35,17 @@
   <navigation-case>
    <from-outcome>transferHouse</from-outcome>
    <to-view-id>/transferHouse.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/addHouse.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>addOwner</from-outcome>
+   <to-view-id>/addOwner.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>addLocation</from-outcome>
+   <to-view-id>/addLocation.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <application/>

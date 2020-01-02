@@ -25,7 +25,7 @@ public class Owner {
 	private String firstname;
 
 	// relations
-	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "idOwner", cascade = CascadeType.ALL)
 	private List<House> houses;
 	
 	// constructors

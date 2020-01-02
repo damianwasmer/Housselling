@@ -19,13 +19,13 @@ public class Location {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
-	@Column(name="location")
-	private String location;
+	@Column(name="city")
+	private String city;
 	@Column(name="postCode")
 	private String postCode;
 
 	// relations
-	@OneToMany(mappedBy = "location", cascade = CascadeType.ALL)//@JoinColumn(name = "FK_CLIENT")
+	@OneToMany(mappedBy = "idLocation", cascade = CascadeType.ALL)
 	private List<House> houses;
 	
 	//Constructors
@@ -34,9 +34,9 @@ public class Location {
 		houses = new ArrayList<House>();
 	}
 	
-	public Location(String location, String postCode, List<House> houses) {
+	public Location(String city, String postCode, List<House> houses) {
 		super();
-		this.location = location;
+		this.city = city;
 		this.postCode = postCode;
 		houses = new ArrayList<House>();
 	}
@@ -51,12 +51,12 @@ public class Location {
 	}
 
 	//location
-	public String getLocation() {
-		return location;
+	public String getCity() {
+		return city;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	//postcode
@@ -87,7 +87,7 @@ public class Location {
 	
 	@Override
 	public String toString() {
-		String result = id + "-" + location + "-" + postCode;
+		String result = id + "-" + city + "-" + postCode;
 		return result;
 	}
 	

@@ -48,8 +48,10 @@ public class TransferBean
     		owners = new ArrayList<>(); 
     	}
 		this.ownerNames = new ArrayList<String>();
+		if(ownerNames != null) {
 		for (Owner owner : owners) {
 			this.ownerNames.add(owner.getLastname());
+		}
 		}
 		
 		// initialize House descriptions
