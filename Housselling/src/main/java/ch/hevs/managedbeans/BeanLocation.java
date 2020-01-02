@@ -33,6 +33,7 @@ public class BeanLocation {
 			locations = new ArrayList<>(); 
     	}
 		this.locationNames = new ArrayList<String>();
+		this.locationNames.add("-");
 		for (Location location : locations) {
 			this.locationNames.add(location.getCity());
 		}

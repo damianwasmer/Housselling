@@ -132,8 +132,8 @@ public class BeanHouse {
 	}
 
 	public void addHouse() {		
-		Owner owner = houseselling.getOwnerLastname("Wasmer");
-		Location location = houseselling.getLocation("Embd");
+		Owner owner = houseselling.getOwnerLastname(lastname);
+		Location location = houseselling.getLocation(city);
 		houseselling.addHouse(houseDescription, street, number, price, location, owner);
 	}
     

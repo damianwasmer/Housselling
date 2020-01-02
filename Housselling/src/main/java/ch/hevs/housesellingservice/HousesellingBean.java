@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
-
 import ch.hevs.businessobject.House;
 import ch.hevs.businessobject.Location;
 import ch.hevs.businessobject.Owner;
@@ -110,6 +109,7 @@ public class HousesellingBean implements Houseselling {
 		h.setPrice(price);
 		h.setLocation(location);
 		h.setOwner(owner);
+			
 		em.persist(h);
 	}
 	
@@ -156,7 +156,7 @@ public class HousesellingBean implements Houseselling {
 
 	@Override
 	public Location getLocation(String city) {
-		Query query = em.createQuery("FROM Location c WHERE c.city=:city");
+		Query query = em.createQuery("Select c FROM Location c WHERE c.city=:city");
 		query.setParameter("city", city);
 		
 		Location location = (Location)query.getSingleResult();
@@ -167,7 +167,7 @@ public class HousesellingBean implements Houseselling {
 
 	@Override
 	public Owner getOwnerLastname(String lastname) {
-		Query query = em.createQuery("FROM Owner o WHERE o.lastname=:lastname");
+		Query query = em.createQuery("Select o FROM Owner o WHERE o.lastname=:lastname");
 		query.setParameter("lastname", lastname);
 		
 		Owner owner = (Owner)query.getSingleResult();

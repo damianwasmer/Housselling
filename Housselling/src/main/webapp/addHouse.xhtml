@@ -35,15 +35,14 @@
 								value="#{beanHouse.price}">
 								
 					</h:inputText>
-					
-					<h:outputText value="source: "></h:outputText>
+
         		<h:outputText value="Owner: "></h:outputText>
-	        	<h:selectOneMenu value="#{beanOwner.name}" valueChangeListener="#{beanHouse.updateOwner}" onchange="submit()">
+	        	<h:selectOneMenu value="#{beanHouse.lastname}">
 	        		<f:selectItems value="#{beanOwner.ownerNames}"/>
 	        	</h:selectOneMenu>
 	        					
 				<h:outputText value="Location: "></h:outputText>
-	        	<h:selectOneMenu value="#{beanLocation.city}" valueChangeListener="#{beanHouse.updateLocation}" onchange="submit()">
+	        	<h:selectOneMenu value="#{beanHouse.city}">
 	        		<f:selectItems value="#{beanLocation.locationNames}"/>
 	        	</h:selectOneMenu>
 	        		 <h:commandButton value="Add House"
@@ -51,10 +50,8 @@
 					</h:commandButton>
 	  
 	    	</h:form>
+	    		<br />
 	    		<h:form>
-	    			<h:commandButton value="Add House"
-								action="#{beanHouse.addHouse}">
-					</h:commandButton>
 				<h:commandLink action="welcomeHouseselling">
 					<h:outputText value="Mainpage" />
 				</h:commandLink>
