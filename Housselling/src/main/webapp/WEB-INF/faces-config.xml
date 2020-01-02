@@ -36,6 +36,14 @@
    <from-outcome>transferHouse</from-outcome>
    <to-view-id>/transferHouse.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>showOwners</from-outcome>
+   <to-view-id>/showOwners.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>showLocations</from-outcome>
+   <to-view-id>/showLocations.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/addHouse.xhtml</from-view-id>

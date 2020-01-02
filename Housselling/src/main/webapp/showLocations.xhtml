@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+    	<div class="container">
+	    	
+	    		<h1>All Locations</h1>
+    		       	<h:outputLabel value="List of all Owners"></h:outputLabel>
+      				
+       				<h:form>
+       					<h:dataTable value="#{beanLocation.locations}" var="location"
+					styleClass="locationTable" headerClass="locationTableHeader"
+					rowClasses="locationTableOddRow,houseTableEvenRow">
+					<h:column>
+						<f:facet name="header">City</f:facet>
+						<h:outputText value="#{location.city}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Postcode</f:facet>
+						<h:outputText value="#{location.postCode}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Delete</f:facet>
+						<h:commandButton value="Delete"
+							action="#{beanLocation.deleteLocation(location)}"></h:commandButton>
+					</h:column>
+				</h:dataTable>
+				</h:form>
+       				
+	    		<h:form>
+				<h:commandLink action="welcomeHouseselling">
+					<h:outputText value="Mainpage" />
+				</h:commandLink>
+				<br />
+				<h:commandLink action="addLocation">
+					<h:outputText value="add Location" />
+				</h:commandLink>
+			</h:form>
+    	</div>
+    </ui:define>
+</ui:composition>
+    
+</html>

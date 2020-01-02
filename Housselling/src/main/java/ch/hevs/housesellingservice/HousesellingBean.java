@@ -147,6 +147,13 @@ public class HousesellingBean implements Houseselling {
 		return location.getId();
 	}
 
+	@Override
+	public void deleteLocation(Location location) {
+		// TODO Auto-generated method stub
+		Location locationdelete = em.merge(location);
+		em.remove(locationdelete);
+	}
+
 	/*@Override
 	public Location getLocation(String city) {
 		Query query = em.createQuery("FROM Location c WHERE c.city=:city");

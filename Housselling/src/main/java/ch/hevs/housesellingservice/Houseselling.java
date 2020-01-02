@@ -26,6 +26,7 @@ public interface Houseselling {
 	long getIdLocation(String city);
 	//Location getLocation(String location);
 	void addLocation(String location, String postcode);
+	void deleteLocation(Location location);
 	
 	//House
 	void addHouse(String houseDescription, String street, int number, double price, long idLocation, long idOwner);

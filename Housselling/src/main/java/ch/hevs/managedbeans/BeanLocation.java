@@ -111,6 +111,9 @@ public class BeanLocation {
     	houseselling.addLocation(location, postcode);
     }
 	
-	
+	public void deleteLocation(Location location){
+		houseselling.deleteLocation(location);
+		locations.remove(location);
+	}
 
 }

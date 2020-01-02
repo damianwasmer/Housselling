@@ -133,8 +133,10 @@ public class BeanHouse {
 	}
 
 	public void addHouse() {		
-		Long idLocation = houseselling.getIdLocation(city);
-		Long idOwner = houseselling.getIdOwner(lastname);
+		Long idLocation = houseselling.getIdLocation("Embd");
+		Long idOwner = houseselling.getIdOwner("Test");
+		//Long idOwner = (long) 1;
+		//Long idLocation = (long) 1;
 		houseselling.addHouse(houseDescription, street, number, price, idLocation, idOwner);
 	}
     

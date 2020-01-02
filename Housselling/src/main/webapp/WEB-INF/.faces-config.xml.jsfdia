@@ -13,6 +13,12 @@
    <PROCESS-ITEM-OUTPUT ID="transferHouse::#transferHouse.xhtml"
     NAME="output2" PATH="/transferHouse.xhtml"
     TARGET="rules:#transferHouse.xhtml" TITLE="transferHouse" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="showOwners::#showOwners.xhtml"
+    NAME="output3" PATH="/showOwners.xhtml"
+    TARGET="rules:#showOwners.xhtml" TITLE="showOwners" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="showLocations::#showLocations.xhtml"
+    NAME="output4" PATH="/showLocations.xhtml"
+    TARGET="rules:#showLocations.xhtml" TITLE="showLocations" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#transferHouse.xhtml"
@@ -35,4 +41,9 @@
   SHAPE="463,130,0,0" model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#addLocation.xhtml" PATH="/addLocation.xhtml"
   SHAPE="456,184,50,25" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#showOwners.xhtml" PATH="/showOwners.xhtml"
+  SHAPE="290,425,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#showLocations.xhtml"
+  PATH="/showLocations.xhtml" SHAPE="280,488,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
 </PROCESS>

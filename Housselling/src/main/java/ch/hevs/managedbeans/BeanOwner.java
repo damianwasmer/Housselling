@@ -101,6 +101,10 @@ public class BeanOwner {
     	houseselling.addOwner(firstname, lastname);
     }
 
+	public void deleteOwner(Owner owner){
+		houseselling.deleteOwner(owner);
+		owners.remove(owner);
+	}
 
 
 	@Override
