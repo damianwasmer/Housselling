@@ -35,10 +35,8 @@ public class BeanOwner {
     		owners = new ArrayList<>(); 
     	}
 		 
-		owneredit = houseselling.getOwners();
-		if(owneredit==null){
-			owneredit = new ArrayList<>(); 
-    	}
+		owneredit = new ArrayList<>(); 
+    	
 		
 		this.ownerNames = new ArrayList<String>();
 		this.ownerNames.add("-");
@@ -146,31 +144,33 @@ public class BeanOwner {
 
 
 
-	public void addOwner() {
+	public String addOwner() {
     	
     	houseselling.addOwner(firstname, lastname);
+    	
+    	//Go to this page
+    	return "showOwners";
 
     }
 
 	public void deleteOwner(Owner owner){
 		houseselling.deleteOwner(owner);
-		owners.remove(owner);
 	}
 	
 	public void execute(Owner owner) {
 
 		updateLastname = owner.getLastname();
 		updateFirstname = owner.getFirstname();
-		//owneredit.remove(owner);
+		owneredit.add(owner);
 
 		//return "/updateOwner.xhtml?faces-redirect=true";
 	}
 	
 	public void editOwner() {
-		Owner owner2 = new Owner();
-		owner2.setFirstname(updateFirstname);
-		owner2.setLastname(updateLastname);
-		houseselling.editOwner(owner2);
+		for (Owner owner : owneredit){
+			houseselling.editOwner(owner);
+		}
+		owners = houseselling.getOwners();
 	}
 	
 	

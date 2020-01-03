@@ -38,22 +38,32 @@
 				</h:dataTable>
 				</h:form>
 				
-				<h:form>
-	    		<h3>Update Owner</h3>
-       				<h:outputText value="Firstname"></h:outputText>
-       				<h:inputText size="20"
-								value="#{beanOwner.updateFirstname}">
+				<br />
+				
+				 <h:form>
+       					<h:dataTable value="#{beanOwner.owneredit}" var="owner"
+					styleClass="ownerTable" headerClass="ownerTableHeader"
+					rowClasses="ownerTableOddRow,houseTableEvenRow">
+					<h:column>
+						<h:inputText size="20"
+								value="#{owner.firstname}">
 								<f:validateRegex pattern="[A-Z][a-z]*" />
 							</h:inputText>
-       				<h:outputText value="Lastname"></h:outputText>
-       				<h:inputText size="20"
-								value="#{beanOwner.updateLastname}">
+					</h:column>
+					<h:column>
+						<h:inputText size="20"
+								value="#{owner.lastname}">
 								<f:validateRegex pattern="[A-Z][a-z]*" />
 					</h:inputText>
-					<h:commandButton value="Edit Owner"
-								action="#{beanOwner.editOwner}">
-					</h:commandButton>
-	    	</h:form>
+					</h:column>
+					<h:column>
+						<h:commandButton value="Save changes"
+							action="#{beanOwner.editOwner}"></h:commandButton>
+					</h:column>
+				</h:dataTable>
+				<h:commandButton value="Save changes"
+							action="#{beanOwner.editOwner}"></h:commandButton>
+				</h:form>
        				
 	    		<h:form>
 				<h:commandLink action="welcomeHouseselling">
