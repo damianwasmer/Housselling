@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+    	<div class="container">
+	    	<h:form>
+	    		<h1>Update Owner</h1>
+    		       	<h:outputLabel value="Owner Information:"></h:outputLabel>
+       				<br></br>
+       				<h:outputText value="Firstname"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanOwner.updateFirstname}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
+							</h:inputText>
+       				<h:outputText value="Lastname"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanOwner.updateLastname}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
+					</h:inputText>
+					<h:commandButton value="Add Owner"
+								action="#{beanOwner.addOwner}">
+					</h:commandButton>
+	    	</h:form>
+	    		<h:form>
+				<h:commandLink action="welcomeHouseselling">
+					<h:outputText value="Mainpage" />
+				</h:commandLink>
+			</h:form>
+    	</div>
+    </ui:define>
+</ui:composition>
+    
+</html>

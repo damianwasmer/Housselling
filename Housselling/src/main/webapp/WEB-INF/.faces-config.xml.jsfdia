@@ -42,8 +42,17 @@
  <PROCESS-ITEM NAME="rules:#addLocation.xhtml" PATH="/addLocation.xhtml"
   SHAPE="456,184,50,25" model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#showOwners.xhtml" PATH="/showOwners.xhtml"
-  SHAPE="290,425,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+  SHAPE="290,425,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#showOwners.xhtml:0" NAME="item"
+   PATH="/showOwners.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="updateOwner::#updateOwner.xhtml"
+    NAME="output" PATH="/updateOwner.xhtml"
+    TARGET="rules:#updateOwner.xhtml" TITLE="updateOwner" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#showLocations.xhtml"
   PATH="/showLocations.xhtml" SHAPE="280,488,50,25"
   model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#updateOwner.xhtml" PATH="/updateOwner.xhtml"
+  SHAPE="462,424,0,0" model-entity="JSFProcessGroup" persistent="true"/>
 </PROCESS>

@@ -16,6 +16,8 @@ public class BeanOwner {
     private String name;
     private String firstname;
     private String lastname;
+    private String updateFirstname;
+    private String updateLastname;
     private List<String> ownerNames;
     private List<Owner> owners;
     
@@ -79,6 +81,7 @@ public class BeanOwner {
 
 	public void setFirstname(final String firstname) {
 		this.firstname = firstname;
+		
 	}
 
 	public String getLastname() {
@@ -87,6 +90,7 @@ public class BeanOwner {
 
 	public void setLastname(final String lastname) {
 		this.lastname = lastname;
+		
 	}
 	
     public Houseselling getHouseselling() {
@@ -96,6 +100,30 @@ public class BeanOwner {
 	public void setHouseselling(Houseselling houseselling) {
 		this.houseselling = houseselling;
 	}
+	
+	
+	public String getUpdateFirstname() {
+		return updateFirstname;
+	}
+
+
+	public void setUpdateFirstname(String updateFirstname) {
+		this.updateFirstname = updateFirstname;
+	}
+
+
+
+	public String getUpdateLastname() {
+		return updateLastname;
+	}
+
+
+
+	public void setUpdateLastname(String updateLastname) {
+		this.updateLastname = updateLastname;
+	}
+
+
 
 	public void addOwner() {
     	
@@ -106,8 +134,15 @@ public class BeanOwner {
 		houseselling.deleteOwner(owner);
 		owners.remove(owner);
 	}
-
-
+	
+	public String execute(Owner owner) {
+		updateLastname = owner.getLastname();
+		updateFirstname = owner.getFirstname();		
+		return "/updateOwner.xhtml?faces-redirect=true";
+	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return " firstname" + " " + "lastname";
