@@ -136,6 +136,7 @@ public class BeanHouse {
 		Location location = houseselling.getLocation(city);
 		houseselling.addHouse(houseDescription, street, number, price, location, owner);
 	}
+	
     
     
     

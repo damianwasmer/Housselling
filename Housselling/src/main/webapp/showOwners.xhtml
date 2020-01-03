@@ -11,8 +11,7 @@
     	<div class="container">
 	    	
 	    		<h1>All Owners</h1>
-    		       	<h:outputLabel value="List of all Owners"></h:outputLabel>
-       				
+     				
        				<h:form>
        					<h:dataTable value="#{beanOwner.owners}" var="owner"
 					styleClass="ownerTable" headerClass="ownerTableHeader"
@@ -38,6 +37,23 @@
 					</h:column>
 				</h:dataTable>
 				</h:form>
+				
+				<h:form>
+	    		<h3>Update Owner</h3>
+       				<h:outputText value="Firstname"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanOwner.updateFirstname}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
+							</h:inputText>
+       				<h:outputText value="Lastname"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanOwner.updateLastname}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
+					</h:inputText>
+					<h:commandButton value="Edit Owner"
+								action="#{beanOwner.editOwner}">
+					</h:commandButton>
+	    	</h:form>
        				
 	    		<h:form>
 				<h:commandLink action="welcomeHouseselling">

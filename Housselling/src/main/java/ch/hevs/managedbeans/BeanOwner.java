@@ -20,6 +20,7 @@ public class BeanOwner {
     private String updateLastname;
     private List<String> ownerNames;
     private List<Owner> owners;
+    private List<Owner> owneredit; 
     
     @PostConstruct
     public void initialize() throws NamingException {
@@ -33,6 +34,12 @@ public class BeanOwner {
 		if(owners==null){
     		owners = new ArrayList<>(); 
     	}
+		 
+		owneredit = houseselling.getOwners();
+		if(owneredit==null){
+			owneredit = new ArrayList<>(); 
+    	}
+		
 		this.ownerNames = new ArrayList<String>();
 		this.ownerNames.add("-");
 		for (Owner owner : owners) {
@@ -102,9 +109,11 @@ public class BeanOwner {
 	}
 	
 	
+	
 	public String getUpdateFirstname() {
 		return updateFirstname;
 	}
+
 
 
 	public void setUpdateFirstname(String updateFirstname) {
@@ -125,9 +134,22 @@ public class BeanOwner {
 
 
 
+	public List<Owner> getOwneredit() {
+		return owneredit;
+	}
+
+
+
+	public void setOwneredit(List<Owner> owneredit) {
+		this.owneredit = owneredit;
+	}
+
+
+
 	public void addOwner() {
     	
     	houseselling.addOwner(firstname, lastname);
+
     }
 
 	public void deleteOwner(Owner owner){
@@ -135,12 +157,21 @@ public class BeanOwner {
 		owners.remove(owner);
 	}
 	
-	public String execute(Owner owner) {
+	public void execute(Owner owner) {
+
 		updateLastname = owner.getLastname();
-		updateFirstname = owner.getFirstname();		
-		return "/updateOwner.xhtml?faces-redirect=true";
+		updateFirstname = owner.getFirstname();
+		//owneredit.remove(owner);
+
+		//return "/updateOwner.xhtml?faces-redirect=true";
 	}
 	
+	public void editOwner() {
+		Owner owner2 = new Owner();
+		owner2.setFirstname(updateFirstname);
+		owner2.setLastname(updateLastname);
+		houseselling.editOwner(owner2);
+	}
 	
 	
 	@Override
