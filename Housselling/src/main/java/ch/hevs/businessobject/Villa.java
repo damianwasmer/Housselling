@@ -18,9 +18,12 @@ public class Villa extends House {
 		this.nrpools = nrpools;
 	}
 	
+		
 	public Villa() {
 		super();
 	}
+	
+	
 
 	public int getNrpools() {
 		return nrpools;

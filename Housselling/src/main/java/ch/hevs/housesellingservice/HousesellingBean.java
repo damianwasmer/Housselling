@@ -11,16 +11,20 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
+import ch.hevs.businessobject.Chalet;
 import ch.hevs.businessobject.House;
 import ch.hevs.businessobject.Location;
 import ch.hevs.businessobject.Owner;
+import ch.hevs.businessobject.Villa;
 
 @Stateful
 public class HousesellingBean implements Houseselling {
 
+
 	@PersistenceContext(name = "HousesellingPU", type=PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	EntityTransaction tx = null;
+	private Houseselling houseselling;
 	
 	//Owner-------------------------------------
 	@Override
@@ -174,6 +178,55 @@ public class HousesellingBean implements Houseselling {
 		System.out.println("ID Owner called from getOwnerLastname(): "+owner.getId());
 		return owner;
 	}
+
+	@Override
+	public void addChalet(int nrSkirooms) {
+		
+		Chalet chalet = new Chalet();
+		chalet.setNrskirooms(nrSkirooms);
+		em.persist(chalet);
+		
+	}
+
+	@Override
+	public void addVilla(int nrPools) {
+
+		Villa villa = new Villa();
+		villa.setNrpools(nrPools);
+		em.persist(villa);		
+	}
+
+	@Override
+	public void addHouseChalet(String houseDescription, String street, int number, double price, Location location,
+			Owner owner, int nrRooms) {
+		Chalet c = new Chalet();
+		c.setDescription(houseDescription);
+		c.setStreet(street);
+		c.setNumber(number);
+		c.setPrice(price);
+		c.setLocation(location);
+		c.setOwner(owner);
+		c.setNrskirooms(nrRooms);			
+		em.persist(c);
+		
+	}
+
+	@Override
+	public void addHouseVilla(String houseDescription, String street, int number, double price, Location location,
+			Owner owner, int nrPools) {
+		Villa v = new Villa();
+		v.setDescription(houseDescription);
+		v.setStreet(street);
+		v.setNumber(number);
+		v.setPrice(price);
+		v.setLocation(location);
+		v.setOwner(owner);
+		v.setNrpools(nrPools);		
+		em.persist(v);
+		
+	}
+
+	
 	
 
 }

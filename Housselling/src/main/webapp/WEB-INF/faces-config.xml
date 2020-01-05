@@ -25,8 +25,8 @@
   <display-name>/welcomeHouseselling.xhtml</display-name>
   <from-view-id>/welcomeHouseselling.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>addHouse</from-outcome>
-   <to-view-id>/addHouse.xhtml</to-view-id>
+   <from-outcome>addChalet</from-outcome>
+   <to-view-id>/addChalet.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>showHouses</from-outcome>
@@ -44,9 +44,20 @@
    <from-outcome>showLocations</from-outcome>
    <to-view-id>/showLocations.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>addVilla</from-outcome>
+   <to-view-id>/addVilla.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/addHouse.xhtml</from-view-id>
+  <from-view-id>/showOwners.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>updateOwner</from-outcome>
+   <to-view-id>/updateOwner.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/addChalet.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>addOwner</from-outcome>
    <to-view-id>/addOwner.xhtml</to-view-id>
@@ -57,10 +68,14 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/showOwners.xhtml</from-view-id>
+  <from-view-id>/addVilla.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>updateOwner</from-outcome>
-   <to-view-id>/updateOwner.xhtml</to-view-id>
+   <from-outcome>addOwner</from-outcome>
+   <to-view-id>/addOwner.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>addLocation</from-outcome>
+   <to-view-id>/addLocation.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <application/>

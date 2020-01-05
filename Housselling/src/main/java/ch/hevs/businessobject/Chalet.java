@@ -21,6 +21,8 @@ public class Chalet extends House{
 	public Chalet() {
 		super();
 	}
+	
+	
 
 	public int getNrskirooms() {
 		return nrskirooms;

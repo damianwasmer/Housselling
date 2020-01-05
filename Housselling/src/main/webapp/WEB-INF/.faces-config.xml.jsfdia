@@ -4,9 +4,9 @@
   PATH="/welcomeHouseselling.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#welcomeHouseselling.xhtml:0" NAME="item"
    PATH="/welcomeHouseselling.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="addHouse::#addHouse.xhtml" NAME="output"
-    PATH="/addHouse.xhtml" TARGET="rules:#addHouse.xhtml"
-    TITLE="addHouse" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addChalet::#addChalet.xhtml" NAME="output"
+    PATH="/addChalet.xhtml" TARGET="rules:#addChalet.xhtml"
+    TITLE="addChalet" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="showHouses::#showHouses.xhtml"
     NAME="output1" PATH="/showHouses.xhtml"
     TARGET="rules:#showHouses.xhtml" TITLE="showHouses" model-entity="JSFProcessItemOutput"/>
@@ -19,30 +19,21 @@
    <PROCESS-ITEM-OUTPUT ID="showLocations::#showLocations.xhtml"
     NAME="output4" PATH="/showLocations.xhtml"
     TARGET="rules:#showLocations.xhtml" TITLE="showLocations" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addVilla::#addVilla.xhtml" NAME="output5"
+    PATH="/addVilla.xhtml" TARGET="rules:#addVilla.xhtml"
+    TITLE="addVilla" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#transferHouse.xhtml"
-  PATH="/transferHouse.xhtml" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/transferHouse.xhtml" SHAPE="256,264,50,25" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#showHouses.xhtml" PATH="/showHouses.xhtml"
-  SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#addHouse.xhtml" PATH="/addHouse.xhtml"
-  SHAPE="272,117,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#addHouse.xhtml:0" NAME="item"
-   PATH="/addHouse.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="addOwner::#addOwner.xhtml" NAME="output"
-    PATH="/addOwner.xhtml" TARGET="rules:#addOwner.xhtml"
-    TITLE="addOwner" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="addLocation::#addLocation.xhtml"
-    NAME="output1" PATH="/addLocation.xhtml"
-    TARGET="rules:#addLocation.xhtml" TITLE="addLocation" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
+  SHAPE="280,208,50,25" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#addOwner.xhtml" PATH="/addOwner.xhtml"
-  SHAPE="463,130,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+  SHAPE="456,64,50,25" model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#addLocation.xhtml" PATH="/addLocation.xhtml"
-  SHAPE="456,184,50,25" model-entity="JSFProcessGroup" persistent="true"/>
+  SHAPE="464,112,50,25" model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#showOwners.xhtml" PATH="/showOwners.xhtml"
-  SHAPE="290,425,0,0" model-entity="JSFProcessGroup">
+  SHAPE="256,320,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#showOwners.xhtml:0" NAME="item"
    PATH="/showOwners.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="updateOwner::#updateOwner.xhtml"
@@ -51,8 +42,32 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#showLocations.xhtml"
-  PATH="/showLocations.xhtml" SHAPE="280,488,50,25"
+  PATH="/showLocations.xhtml" SHAPE="264,408,50,25"
   model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#updateOwner.xhtml" PATH="/updateOwner.xhtml"
   SHAPE="462,424,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#addChalet.xhtml" PATH="/addChalet.xhtml"
+  SHAPE="240,56,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#addChalet.xhtml:0" NAME="item"
+   PATH="/addChalet.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="addOwner::#addOwner.xhtml" NAME="output"
+    PATH="/addOwner.xhtml" TARGET="rules:#addOwner.xhtml"
+    TITLE="addOwner" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addLocation::#addLocation.xhtml"
+    NAME="output1" PATH="/addLocation.xhtml"
+    TARGET="rules:#addLocation.xhtml" TITLE="addLocation" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#addVilla.xhtml" PATH="/addVilla.xhtml"
+  SHAPE="240,120,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#addVilla.xhtml:0" NAME="item"
+   PATH="/addVilla.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="addOwner::#addOwner.xhtml" NAME="output"
+    PATH="/addOwner.xhtml" TARGET="rules:#addOwner.xhtml"
+    TITLE="addOwner" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addLocation::#addLocation.xhtml"
+    NAME="output1" PATH="/addLocation.xhtml"
+    TARGET="rules:#addLocation.xhtml" TITLE="addLocation" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

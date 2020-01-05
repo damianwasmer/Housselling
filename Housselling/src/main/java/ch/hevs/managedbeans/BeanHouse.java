@@ -1,9 +1,11 @@
 package ch.hevs.managedbeans;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ValueChangeEvent;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -13,7 +15,7 @@ import ch.hevs.businessobject.Location;
 import ch.hevs.businessobject.Owner;
 import ch.hevs.housesellingservice.Houseselling;
 
-public class BeanHouse {
+public class BeanHouse  {
 
 	private Houseselling houseselling;
     private String houseDescription;
@@ -27,6 +29,8 @@ public class BeanHouse {
     private String firstname;
     private String lastname;
     private String city;
+    private int nrPools;
+    private int nrSkirooms;
     
     @PostConstruct
     public void initialize() throws NamingException {
@@ -41,17 +45,42 @@ public class BeanHouse {
 			locations = new ArrayList<>(); 
     	}
 		
+				
 		//get owners
 		owners = houseselling.getOwners();
 		if(owners==null) {
 			owners = new ArrayList<>();
 		}
+		
     }
 
+
+    
     //Getter & Setter
+    
+  
+    
 	public Houseselling getHouseselling() {
 		return houseselling;
 	}
+
+
+	public int getNrPools() {
+		return nrPools;
+	}
+
+	public void setNrPools(int nrPools) {
+		this.nrPools = nrPools;
+	}
+
+	public int getNrSkirooms() {
+		return nrSkirooms;
+	}
+
+	public void setNrSkirooms(int nrSkirooms) {
+		this.nrSkirooms = nrSkirooms;
+	}
+
 
 	public void setHouseselling(Houseselling houseselling) {
 		this.houseselling = houseselling;
@@ -131,11 +160,27 @@ public class BeanHouse {
 		this.city = city;
 	}
 
-	public void addHouse() {		
+	//Add chalet
+	public void addHouseChalet() {	
+		
 		Owner owner = houseselling.getOwnerLastname(lastname);
 		Location location = houseselling.getLocation(city);
-		houseselling.addHouse(houseDescription, street, number, price, location, owner);
+		houseselling.addHouseChalet(houseDescription, street, number, price, location, owner, nrSkirooms);
+			
+		
 	}
+	
+	//add villa
+	public void addHouseVilla() {	
+		
+		Owner owner = houseselling.getOwnerLastname(lastname);
+		Location location = houseselling.getLocation(city);
+		houseselling.addHouseVilla(houseDescription, street, number, price, location, owner, nrPools);
+		
+	}
+	
+	
+
 	
     
     

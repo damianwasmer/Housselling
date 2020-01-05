@@ -30,9 +30,14 @@ public interface Houseselling {
 	
 	//House
 	void addHouse(String houseDescription, String street, int number, double price, Location location, Owner owner);
+	void addChalet(int nrSkirooms);
+	void addVilla(int nrPools);
 	House getHouse(String HouseDescription, String lastnameOwner);
 	List<House> getHouseListFromOwner(String firstname, String lastname);
 	void transfer(House compteSrc, House compteDest, int montant) throws Exception;
+	void addHouseChalet(String houseDescription, String street, int number, double price, Location location, Owner owner, int nrRooms);
+	void addHouseVilla(String houseDescription, String street, int number, double price, Location location, Owner owner, int nrPools);
+
 
 
 }

@@ -6,52 +6,72 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
     
+
+    
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
     <ui:define name="content">
     	<div class="container">
+    	
+    			    
 	    	<h:form>
-	    		<h1>Add new house</h1>
-    		       	<h:outputLabel value="House Information:"></h:outputLabel>
-       				<br></br>
+	    		     <h1>Add new Villa</h1>
+       				<br></br>    		
+	        				       	
        				<h:outputText value="House Description"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanHouse.houseDescription}">
 								<f:validateRegex pattern="[A-Z][a-z]*" />
 							</h:inputText>
-							
+					<br></br>
+						
        				<h:outputText value="Street"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanHouse.street}">
 								<f:validateRegex pattern="[A-Z][a-z]*" />
 					</h:inputText>
+					<br></br>
 					
 					<h:outputText value="Number"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanHouse.number}">
 					</h:inputText>
+					<br></br>
 					
 					<h:outputText value="Price"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanHouse.price}">
 								
 					</h:inputText>
+					<br></br>
+					
+					<h:outputText value="Number Pools"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanHouse.nrPools}">
+								
+					</h:inputText>
+					<br></br>					
 
         		<h:outputText value="Owner: "></h:outputText>
 	        	<h:selectOneMenu value="#{beanHouse.lastname}">
 	        		<f:selectItems value="#{beanOwner.ownerNames}"/>
 	        	</h:selectOneMenu>
-	        					
+	        	<br></br>
+	        				
 				<h:outputText value="Location: "></h:outputText>
 	        	<h:selectOneMenu value="#{beanHouse.city}">
 	        		<f:selectItems value="#{beanLocation.locationNames}"/>
-	        	</h:selectOneMenu>
+	        	</h:selectOneMenu>		        	
+				<br></br>
+				
 	        		 <h:commandButton value="Add House"
-								action="#{beanHouse.addHouse}">
+								action="#{beanHouse.addHouseVilla}">
 					</h:commandButton>
-	  
+					
+					
 	    	</h:form>
+	    	  
+	    	<h:form>
 	    		<br />
-	    		<h:form>
 				<h:commandLink action="welcomeHouseselling">
 					<h:outputText value="Mainpage" />
 				</h:commandLink>
