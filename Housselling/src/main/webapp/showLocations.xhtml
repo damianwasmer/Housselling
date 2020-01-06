@@ -13,9 +13,7 @@
 	    		<h1>All Locations</h1>
       				
        				<h:form>
-       					<h:dataTable value="#{beanLocation.locations}" var="location"
-					styleClass="locationTable" headerClass="locationTableHeader"
-					rowClasses="locationTableOddRow,houseTableEvenRow">
+       					<h:dataTable value="#{beanLocation.locations}" var="location">
 					<h:column>
 						<f:facet name="header">City</f:facet>
 						<h:outputText value="#{location.city}" />

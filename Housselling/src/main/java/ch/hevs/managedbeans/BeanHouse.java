@@ -1,18 +1,17 @@
 package ch.hevs.managedbeans;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.event.ValueChangeEvent;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import ch.hevs.businessobject.Chalet;
 import ch.hevs.businessobject.House;
 import ch.hevs.businessobject.Location;
 import ch.hevs.businessobject.Owner;
+import ch.hevs.businessobject.Villa;
 import ch.hevs.housesellingservice.Houseselling;
 
 public class BeanHouse  {
@@ -22,11 +21,10 @@ public class BeanHouse  {
     private String street;
     private int number;
     private double price;
-    private Owner owner;
-    private Location location;
     private List<Owner> owners;
     private List<Location> locations;
-    private String firstname;
+    private List<Villa> villas;
+    private List<Chalet> chalets;
     private String lastname;
     private String city;
     private int nrPools;
@@ -45,21 +43,27 @@ public class BeanHouse  {
 			locations = new ArrayList<>(); 
     	}
 		
-				
 		//get owners
 		owners = houseselling.getOwners();
 		if(owners==null) {
 			owners = new ArrayList<>();
 		}
 		
+		//get villas
+		villas = houseselling.getVillas();
+		if(villas==null) {
+			villas = new ArrayList<>();
+		}
+		
+		//get owners
+		chalets = houseselling.getChalets();
+		if(chalets==null) {
+			chalets = new ArrayList<>();
+		}
     }
 
 
-    
-    //Getter & Setter
-    
-  
-    
+    //Getter & Setter    
 	public Houseselling getHouseselling() {
 		return houseselling;
 	}
@@ -134,16 +138,6 @@ public class BeanHouse  {
 		this.price = price;
 	}
 	
-	public void updateOwner(ValueChangeEvent event) {
-    	//this.owner = (Owner)event.getNewValue();
-			
-    }
-	
-	public void updateLocation(ValueChangeEvent event) {
-    	//this.location = (Location)event.getNewValue();
-			
-    }	
-	
 	public String getLastname() {
 		return lastname;
 	}
@@ -159,6 +153,37 @@ public class BeanHouse  {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
+	public List<Villa> getVillas() {
+		return villas;
+	}
+
+
+	public void setVillas(List<Villa> villas) {
+		this.villas = villas;
+	}
+
+
+	public List<Chalet> getChalets() {
+		return chalets;
+	}
+
+
+	public void setChalets(List<Chalet> chalets) {
+		this.chalets = chalets;
+	}
+
+	//Delete House
+	public void deleteHouse(House house) {
+		houseselling.deleteHouse(house);
+		
+		if(house instanceof Villa){
+			villas.remove(house); 
+		}
+		if(house instanceof Chalet){
+			chalets.remove(house); 
+		}		
+	}
 
 	//Add chalet
 	public void addHouseChalet() {	
@@ -166,7 +191,6 @@ public class BeanHouse  {
 		Owner owner = houseselling.getOwnerLastname(lastname);
 		Location location = houseselling.getLocation(city);
 		houseselling.addHouseChalet(houseDescription, street, number, price, location, owner, nrSkirooms);
-			
 		
 	}
 	
@@ -176,13 +200,7 @@ public class BeanHouse  {
 		Owner owner = houseselling.getOwnerLastname(lastname);
 		Location location = houseselling.getLocation(city);
 		houseselling.addHouseVilla(houseDescription, street, number, price, location, owner, nrPools);
-		
+	
 	}
-	
-	
-
-	
-    
-    
     
 }

@@ -13,9 +13,7 @@
 	    		<h1>All Owners</h1>
      				
        				<h:form>
-       					<h:dataTable value="#{beanOwner.owners}" var="owner"
-					styleClass="ownerTable" headerClass="ownerTableHeader"
-					rowClasses="ownerTableOddRow,houseTableEvenRow">
+       					<h:dataTable value="#{beanOwner.owners}" var="owner">
 					<h:column>
 						<f:facet name="header">Firstname</f:facet>
 						<h:outputText value="#{owner.firstname}" />
@@ -28,42 +26,20 @@
 						<f:facet name="header">Delete</f:facet>
 						<h:commandButton value="Delete"
 							action="#{beanOwner.deleteOwner(owner)}"></h:commandButton>
-					</h:column>
+					</h:column>					
 					<h:column>
 						<f:facet name="header">Update</f:facet>
 						<h:commandButton value="Update"
-							action="#{beanOwner.execute(owner)}">
+							action="updateOwner">
+							<f:setPropertyActionListener
+								target="#{beanOwner.ownerSelected}" value="#{owner}" />
 						</h:commandButton>
 					</h:column>
+					
 				</h:dataTable>
 				</h:form>
 				
 				<br />
-				
-				 <h:form>
-       					<h:dataTable value="#{beanOwner.owneredit}" var="owner"
-					styleClass="ownerTable" headerClass="ownerTableHeader"
-					rowClasses="ownerTableOddRow,houseTableEvenRow">
-					<h:column>
-						<h:inputText size="20"
-								value="#{owner.firstname}">
-								<f:validateRegex pattern="[A-Z][a-z]*" />
-							</h:inputText>
-					</h:column>
-					<h:column>
-						<h:inputText size="20"
-								value="#{owner.lastname}">
-								<f:validateRegex pattern="[A-Z][a-z]*" />
-					</h:inputText>
-					</h:column>
-					<h:column>
-						<h:commandButton value="Save changes"
-							action="#{beanOwner.editOwner}"></h:commandButton>
-					</h:column>
-				</h:dataTable>
-				<h:commandButton value="Save changes"
-							action="#{beanOwner.editOwner}"></h:commandButton>
-				</h:form>
        				
 	    		<h:form>
 				<h:commandLink action="welcomeHouseselling">

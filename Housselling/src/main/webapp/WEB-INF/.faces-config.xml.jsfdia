@@ -45,7 +45,7 @@
   PATH="/showLocations.xhtml" SHAPE="264,408,50,25"
   model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#updateOwner.xhtml" PATH="/updateOwner.xhtml"
-  SHAPE="462,424,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+  SHAPE="456,320,50,25" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#addChalet.xhtml" PATH="/addChalet.xhtml"
   SHAPE="240,56,50,25" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#addChalet.xhtml:0" NAME="item"

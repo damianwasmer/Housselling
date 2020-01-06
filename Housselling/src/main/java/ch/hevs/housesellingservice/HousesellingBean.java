@@ -3,6 +3,7 @@ package ch.hevs.housesellingservice;
 import java.util.List;
 
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -19,7 +20,6 @@ import ch.hevs.businessobject.Villa;
 
 @Stateful
 public class HousesellingBean implements Houseselling {
-
 
 	@PersistenceContext(name = "HousesellingPU", type=PersistenceContextType.EXTENDED)
 	private EntityManager em;
@@ -226,7 +226,29 @@ public class HousesellingBean implements Houseselling {
 		
 	}
 
+	@Override
+	public List<Villa> getVillas() {
+		// TODO Auto-generated method stub
+		return em.createQuery("FROM Villa").getResultList();
+	}
+
+	@Override
+	public List<Chalet> getChalets() {
+		return em.createQuery("FROM Chalet").getResultList();
+	}
+
+	@Override
+	public void deleteHouse(House house) {
+		// TODO Auto-generated method stub
+		House housedelete = em.merge(house);
+		em.remove(housedelete);
+		
+	}
 	
-	
+	public Owner getOwner(long idOwner) {
+		Query query = em.createQuery("FROM Owner o where o.id=:id");
+		query.setParameter("id", idOwner);
+		return (Owner) query.getSingleResult();
+	}
 
 }

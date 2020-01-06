@@ -29,11 +29,11 @@ public class House {
 	private double price;
 	
 	// relations
-	@ManyToOne(targetEntity = Owner.class)
+	@ManyToOne(targetEntity = Owner.class, cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "FK_OWNER")
 	private Owner owner;
 	
-	@ManyToOne(targetEntity = Location.class)
+	@ManyToOne(targetEntity = Location.class, cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "FK_LOCATION")
 	private Location location;
 	

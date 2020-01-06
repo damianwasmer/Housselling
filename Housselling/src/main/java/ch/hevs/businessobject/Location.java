@@ -25,7 +25,7 @@ public class Location {
 	private String postCode;
 
 	// relations
-	@OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "location", cascade = CascadeType.PERSIST, orphanRemoval=true)
 	private List<House> houses;
 	
 	//Constructors

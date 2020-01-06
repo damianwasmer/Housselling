@@ -15,16 +15,16 @@
        				<br></br>
        				<h:outputText value="Firstname"></h:outputText>
        				<h:inputText size="20"
-								value="#{beanOwner.updateFirstname}">
+								value="#{beanOwner.ownerSelected.firstname}">
 								<f:validateRegex pattern="[A-Z][a-z]*" />
 							</h:inputText>
        				<h:outputText value="Lastname"></h:outputText>
        				<h:inputText size="20"
-								value="#{beanOwner.updateLastname}">
+								value="#{beanOwner.ownerSelected.lastname}">
 								<f:validateRegex pattern="[A-Z][a-z]*" />
 					</h:inputText>
-					<h:commandButton value="Add Owner"
-								action="#{beanOwner.addOwner}">
+					<h:commandButton value="Save changes"
+								action="#{beanOwner.editOwner}">
 					</h:commandButton>
 	    	</h:form>   	
 	    	

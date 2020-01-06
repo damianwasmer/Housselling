@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.event.ValueChangeEvent;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -20,7 +21,7 @@ public class BeanOwner {
     private String updateLastname;
     private List<String> ownerNames;
     private List<Owner> owners;
-    private List<Owner> owneredit; 
+    private Owner ownerSelected;
     
     @PostConstruct
     public void initialize() throws NamingException {
@@ -35,9 +36,8 @@ public class BeanOwner {
     		owners = new ArrayList<>(); 
     	}
 		 
-		owneredit = new ArrayList<>(); 
+
     	
-		
 		this.ownerNames = new ArrayList<String>();
 		this.ownerNames.add("-");
 		for (Owner owner : owners) {
@@ -45,35 +45,26 @@ public class BeanOwner {
 		}
     }
     
-    
-    
     public List<String> getOwnerNames() {
 		return ownerNames;
 	}
-
-
 
 	public void setOwnerNames(List<String> ownerNames) {
 		this.ownerNames = ownerNames;
 	}
 
-
-
 	public String getName() {
 		return name;
 	}
-
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
 
-
 	public void setOwners(List<Owner> owners) {
 		this.owners = owners;
 	}
-
 
 
 	public List<Owner> getOwners() {
@@ -107,11 +98,9 @@ public class BeanOwner {
 	}
 	
 	
-	
 	public String getUpdateFirstname() {
 		return updateFirstname;
 	}
-
 
 
 	public void setUpdateFirstname(String updateFirstname) {
@@ -119,30 +108,22 @@ public class BeanOwner {
 	}
 
 
-
 	public String getUpdateLastname() {
 		return updateLastname;
 	}
-
 
 
 	public void setUpdateLastname(String updateLastname) {
 		this.updateLastname = updateLastname;
 	}
 
-
-
-	public List<Owner> getOwneredit() {
-		return owneredit;
+	public Owner getOwnerSelected() {
+		return ownerSelected;
 	}
 
-
-
-	public void setOwneredit(List<Owner> owneredit) {
-		this.owneredit = owneredit;
+	public void setOwnerSelected(Owner ownerSelected) {
+		this.ownerSelected = ownerSelected;
 	}
-
-
 
 	public String addOwner() {
     	
@@ -157,20 +138,15 @@ public class BeanOwner {
 		houseselling.deleteOwner(owner);
 	}
 	
-	public void execute(Owner owner) {
-
-		updateLastname = owner.getLastname();
-		updateFirstname = owner.getFirstname();
-		owneredit.add(owner);
-
-		//return "/updateOwner.xhtml?faces-redirect=true";
-	}
 	
 	public void editOwner() {
-		for (Owner owner : owneredit){
-			houseselling.editOwner(owner);
-		}
-		owners = houseselling.getOwners();
+		
+		houseselling.editOwner(ownerSelected);
+
+	}
+	
+	public void updateIdOwnerEdit(ValueChangeEvent event) {
+		ownerSelected = houseselling.getOwner((Long)event.getNewValue());
 	}
 	
 	
