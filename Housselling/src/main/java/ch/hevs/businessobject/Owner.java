@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,21 +29,35 @@ public class Owner {
 	@OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST, orphanRemoval=true)
 	private List<House> houses;
 	
+	//Embedding
+	@Embedded
+	private Language language;
+	
 	// constructors
 	public Owner() {
 		super();
 		houses = new ArrayList<House>();
 	}
 	
-	public Owner(String lastname, String firstname) {
+	public Owner(String lastname, String firstname, String languageName) {
 			this.lastname = lastname;
 			this.firstname = firstname;
+			this.language = new Language(languageName);
 			houses = new ArrayList<House>();
 	}
 
 	//id
+	
 	public long getId() {
 		return id;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 
 	public void setId(long id) {

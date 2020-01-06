@@ -32,6 +32,7 @@ public class BeanLocation {
 		if(locations==null){
 			locations = new ArrayList<>(); 
     	}
+		//Get location names
 		this.locationNames = new ArrayList<String>();
 		this.locationNames.add("-");
 		for (Location location : locations) {
@@ -39,7 +40,7 @@ public class BeanLocation {
 		}
     }
     
-    
+    //Getter and Setter
         
 	public List<String> getLocationNames() {
 		return locationNames;
@@ -107,11 +108,11 @@ public class BeanLocation {
 	}
 
 
-
+	//Add location
 	public void addLocation() {
     	houseselling.addLocation(location, postcode);
     }
-	
+	//delete location
 	public void deleteLocation(Location location){
 		houseselling.deleteLocation(location);
 		locations.remove(location);

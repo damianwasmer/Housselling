@@ -19,7 +19,7 @@ public interface Houseselling {
 	Owner getOwnerEntity(String firstname, String lastname);
 	Owner getOwnerLastname(String lastname);
 	long getIdOwner(String lastname);
-	void addOwner(String firstname, String lastname);
+	void addOwner(String firstname, String lastname, String language);
 	void deleteOwner(Owner owner);
 	void editOwner(Owner owner);
 	Owner getOwner(long idOwner);
@@ -33,11 +33,8 @@ public interface Houseselling {
 	
 	//House
 	void addHouse(String houseDescription, String street, int number, double price, Location location, Owner owner);
-	void addChalet(int nrSkirooms);
-	void addVilla(int nrPools);
 	House getHouse(String HouseDescription, String lastnameOwner);
 	List<House> getHouseListFromOwner(String firstname, String lastname);
-	void transfer(House compteSrc, House compteDest, int montant) throws Exception;
 	void addHouseChalet(String houseDescription, String street, int number, double price, Location location, Owner owner, int nrRooms);
 	void addHouseVilla(String houseDescription, String street, int number, double price, Location location, Owner owner, int nrPools);
 	List<Villa>getVillas();

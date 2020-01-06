@@ -23,6 +23,11 @@
 								value="#{beanOwner.lastname}">
 								<f:validateRegex pattern="[A-Z][a-z]*" />
 					</h:inputText>
+					<h:outputText value="Language"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanOwner.language}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
+					</h:inputText>
 					<h:commandButton value="Add Owner"
 								action="#{beanOwner.addOwner}">
 					</h:commandButton>

@@ -17,6 +17,7 @@ public class BeanOwner {
     private String name;
     private String firstname;
     private String lastname;
+    private String language;
     private String updateFirstname;
     private String updateLastname;
     private List<String> ownerNames;
@@ -37,7 +38,7 @@ public class BeanOwner {
     	}
 		 
 
-    	
+    	//Get owner names
 		this.ownerNames = new ArrayList<String>();
 		this.ownerNames.add("-");
 		for (Owner owner : owners) {
@@ -45,13 +46,23 @@ public class BeanOwner {
 		}
     }
     
+    //Getter and setter
     public List<String> getOwnerNames() {
 		return ownerNames;
 	}
-
-	public void setOwnerNames(List<String> ownerNames) {
+    
+    public void setOwnerNames(List<String> ownerNames) {
 		this.ownerNames = ownerNames;
 	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	
 
 	public String getName() {
 		return name;
@@ -125,31 +136,34 @@ public class BeanOwner {
 		this.ownerSelected = ownerSelected;
 	}
 
+	//add owner
 	public String addOwner() {
     	
-    	houseselling.addOwner(firstname, lastname);
+    	houseselling.addOwner(firstname, lastname, language);
     	
     	//Go to this page
     	return "showOwners";
 
     }
 
+	//delete owner
 	public void deleteOwner(Owner owner){
 		houseselling.deleteOwner(owner);
 	}
 	
-	
+	//edit owner
 	public void editOwner() {
 		
 		houseselling.editOwner(ownerSelected);
 
 	}
 	
+	//update id owner
 	public void updateIdOwnerEdit(ValueChangeEvent event) {
 		ownerSelected = houseselling.getOwner((Long)event.getNewValue());
 	}
 	
-	
+	//toString
 	@Override
 	public String toString() {
 		return " firstname" + " " + "lastname";

@@ -34,11 +34,10 @@ public class HousesellingBean implements Houseselling {
 	}
 	
 	@Override
-	public void addOwner(String firstname, String lastname) {
+	public void addOwner(String firstname, String lastname, String language) {
 		// TODO Auto-generated method stub
-		Owner o = new Owner();
-		o.setFirstname(firstname);
-		o.setLastname(lastname);
+		Owner o = new Owner(firstname,lastname,language);
+				
 		em.persist(o);
 	}
 
@@ -76,6 +75,21 @@ public class HousesellingBean implements Houseselling {
 		em.merge(owner);
 	}
 	
+	@Override
+	public Owner getOwnerLastname(String lastname) {
+		Query query = em.createQuery("Select o FROM Owner o WHERE o.lastname=:lastname");
+		query.setParameter("lastname", lastname);
+		
+		Owner owner = (Owner)query.getSingleResult();
+		System.out.println("ID Owner called from getOwnerLastname(): "+owner.getId());
+		return owner;
+	}
+	
+	public Owner getOwner(long idOwner) {
+		Query query = em.createQuery("FROM Owner o where o.id=:id");
+		query.setParameter("id", idOwner);
+		return (Owner) query.getSingleResult();
+	}
 	
 	//House------------------------------------------
 	@Override
@@ -98,12 +112,7 @@ public class HousesellingBean implements Houseselling {
 		return (List<House>) query.getResultList();
 	}
 
-	@Override
-	public void transfer(House compteSrc, House compteDest, int montant) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void addHouse(String houseDescription, String street, int number, double price, Location location, Owner owner) {
 		House h = new House();
@@ -115,6 +124,57 @@ public class HousesellingBean implements Houseselling {
 		h.setOwner(owner);
 			
 		em.persist(h);
+	}
+	
+	//Add chalet
+	@Override
+	public void addHouseChalet(String houseDescription, String street, int number, double price, Location location,
+			Owner owner, int nrRooms) {
+		Chalet c = new Chalet();
+		c.setDescription(houseDescription);
+		c.setStreet(street);
+		c.setNumber(number);
+		c.setPrice(price);
+		c.setLocation(location);
+		c.setOwner(owner);
+		c.setNrskirooms(nrRooms);			
+		em.persist(c);
+		
+	}
+
+	//Add villa
+	@Override
+	public void addHouseVilla(String houseDescription, String street, int number, double price, Location location,
+			Owner owner, int nrPools) {
+		Villa v = new Villa();
+		v.setDescription(houseDescription);
+		v.setStreet(street);
+		v.setNumber(number);
+		v.setPrice(price);
+		v.setLocation(location);
+		v.setOwner(owner);
+		v.setNrpools(nrPools);		
+		em.persist(v);
+		
+	}
+	
+	@Override
+	public void deleteHouse(House house) {
+		// TODO Auto-generated method stub
+		House housedelete = em.merge(house);
+		em.remove(housedelete);
+		
+	}
+	
+	@Override
+	public List<Villa> getVillas() {
+		// TODO Auto-generated method stub
+		return em.createQuery("FROM Villa").getResultList();
+	}
+
+	@Override
+	public List<Chalet> getChalets() {
+		return em.createQuery("FROM Chalet").getResultList();
 	}
 	
 	//Location---------------------------------------
@@ -169,86 +229,6 @@ public class HousesellingBean implements Houseselling {
 		
 	}
 
-	@Override
-	public Owner getOwnerLastname(String lastname) {
-		Query query = em.createQuery("Select o FROM Owner o WHERE o.lastname=:lastname");
-		query.setParameter("lastname", lastname);
 		
-		Owner owner = (Owner)query.getSingleResult();
-		System.out.println("ID Owner called from getOwnerLastname(): "+owner.getId());
-		return owner;
-	}
-
-	@Override
-	public void addChalet(int nrSkirooms) {
-		
-		Chalet chalet = new Chalet();
-		chalet.setNrskirooms(nrSkirooms);
-		em.persist(chalet);
-		
-	}
-
-	@Override
-	public void addVilla(int nrPools) {
-
-		Villa villa = new Villa();
-		villa.setNrpools(nrPools);
-		em.persist(villa);		
-	}
-
-	@Override
-	public void addHouseChalet(String houseDescription, String street, int number, double price, Location location,
-			Owner owner, int nrRooms) {
-		Chalet c = new Chalet();
-		c.setDescription(houseDescription);
-		c.setStreet(street);
-		c.setNumber(number);
-		c.setPrice(price);
-		c.setLocation(location);
-		c.setOwner(owner);
-		c.setNrskirooms(nrRooms);			
-		em.persist(c);
-		
-	}
-
-	@Override
-	public void addHouseVilla(String houseDescription, String street, int number, double price, Location location,
-			Owner owner, int nrPools) {
-		Villa v = new Villa();
-		v.setDescription(houseDescription);
-		v.setStreet(street);
-		v.setNumber(number);
-		v.setPrice(price);
-		v.setLocation(location);
-		v.setOwner(owner);
-		v.setNrpools(nrPools);		
-		em.persist(v);
-		
-	}
-
-	@Override
-	public List<Villa> getVillas() {
-		// TODO Auto-generated method stub
-		return em.createQuery("FROM Villa").getResultList();
-	}
-
-	@Override
-	public List<Chalet> getChalets() {
-		return em.createQuery("FROM Chalet").getResultList();
-	}
-
-	@Override
-	public void deleteHouse(House house) {
-		// TODO Auto-generated method stub
-		House housedelete = em.merge(house);
-		em.remove(housedelete);
-		
-	}
-	
-	public Owner getOwner(long idOwner) {
-		Query query = em.createQuery("FROM Owner o where o.id=:id");
-		query.setParameter("id", idOwner);
-		return (Owner) query.getSingleResult();
-	}
 
 }
