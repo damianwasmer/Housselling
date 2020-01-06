@@ -2,24 +2,19 @@
 <faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
  <managed-bean>
-  <managed-bean-name>transferBean</managed-bean-name>
-  <managed-bean-class>ch.hevs.managedbeans.TransferBean</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
   <managed-bean-name>beanOwner</managed-bean-name>
   <managed-bean-class>ch.hevs.managedbeans.BeanOwner</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>view</managed-bean-scope>
  </managed-bean>
  <managed-bean>
   <managed-bean-name>beanHouse</managed-bean-name>
   <managed-bean-class>ch.hevs.managedbeans.BeanHouse</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>view</managed-bean-scope>
  </managed-bean>
  <managed-bean>
   <managed-bean-name>beanLocation</managed-bean-name>
   <managed-bean-class>ch.hevs.managedbeans.BeanLocation</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>view</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
   <display-name>/welcomeHouseselling.xhtml</display-name>

@@ -52,12 +52,12 @@ public class Owner {
 		return id;
 	}
 
-	public Language getLanguage() {
-		return language;
+	public String getLanguageName() {
+		return language.getName();
 	}
 
-	public void setLanguage(Language language) {
-		this.language = language;
+	public void setLanguageName(String languageName) {
+		language.setName(languageName);
 	}
 
 	public void setId(long id) {

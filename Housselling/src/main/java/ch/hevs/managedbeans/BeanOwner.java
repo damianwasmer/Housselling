@@ -22,7 +22,8 @@ public class BeanOwner {
     private String updateLastname;
     private List<String> ownerNames;
     private List<Owner> owners;
-    private Owner ownerSelected;
+    private Owner ownerSelected = new Owner();
+    private long id;
     
     @PostConstruct
     public void initialize() throws NamingException {
@@ -36,8 +37,7 @@ public class BeanOwner {
 		if(owners==null){
     		owners = new ArrayList<>(); 
     	}
-		 
-
+		
     	//Get owner names
 		this.ownerNames = new ArrayList<String>();
 		this.ownerNames.add("-");
@@ -86,7 +86,7 @@ public class BeanOwner {
 		return firstname;
 	}
 
-	public void setFirstname(final String firstname) {
+	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 		
 	}
@@ -95,7 +95,7 @@ public class BeanOwner {
 		return lastname;
 	}
 
-	public void setLastname(final String lastname) {
+	public void setLastname(String lastname) {
 		this.lastname = lastname;
 		
 	}
@@ -134,6 +134,8 @@ public class BeanOwner {
 
 	public void setOwnerSelected(Owner ownerSelected) {
 		this.ownerSelected = ownerSelected;
+		id=ownerSelected.getId();
+		System.out.println(ownerSelected.getFirstname() + " " + ownerSelected.getId());
 	}
 
 	//add owner
@@ -153,8 +155,12 @@ public class BeanOwner {
 	
 	//edit owner
 	public void editOwner() {
+		/*Owner owner = houseselling.getOwner(id);
+		owner.setFirstname(ownerSelected.getFirstname());
+		owner.setLastname(ownerSelected.getLastname());*/
 		
 		houseselling.editOwner(ownerSelected);
+		System.out.println(ownerSelected.getFirstname() + " " + ownerSelected.getLastname() + " " + ownerSelected.getId());
 
 	}
 	

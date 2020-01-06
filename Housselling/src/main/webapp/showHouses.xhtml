@@ -31,8 +31,16 @@
 						<h:outputText value="#{villa.price}" />
 					</h:column>
 					<h:column>
-						<f:facet name="header">Number pools</f:facet>
-						<h:outputText value="#{1}" />
+						<f:facet name="header">Pools</f:facet>
+						<h:outputText value="#{villa.nrpools}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">City</f:facet>
+						<h:outputText value="#{villa.location.city}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Owner</f:facet>
+						<h:outputText value="#{villa.owner.firstname}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Delete</f:facet>
@@ -64,8 +72,16 @@
 						<h:outputText value="#{chalet.price}" />
 					</h:column>
 					<h:column>
-						<f:facet name="header">Number Skirooms</f:facet>
-						<h:outputText value="#{1}" />
+						<f:facet name="header">Skirooms</f:facet>
+						<h:outputText value="#{chalet.nrskirooms}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">City</f:facet>
+						<h:outputText value="#{chalet.location.city}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Owner</f:facet>
+						<h:outputText value="#{chalet.owner.firstname}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Delete</f:facet>
