@@ -46,10 +46,15 @@ public class HousesellingBean implements Houseselling {
 
 	@Override
 	public Owner getOwnerEntity(String firstname, String lastname) {
-		Query query = em.createQuery("select o from Owner o where o.firstname = :firstname and o.lastname = :lastname");
-		query.setParameter("firstname", firstname);
-		query.setParameter("lastname", lastname); 
-		return (Owner)query.getSingleResult(); 
+		try {
+			Query query = em.createQuery("select o from Owner o where o.firstname = :firstname and o.lastname = :lastname");
+			query.setParameter("firstname", firstname);
+			query.setParameter("lastname", lastname); 
+			return (Owner)query.getSingleResult(); 
+		} catch (Exception e) {
+			return null;
+		}
+
 	}
 
 	@Override
@@ -69,12 +74,16 @@ public class HousesellingBean implements Houseselling {
 	
 	@Override
 	public Owner getOwnerLastname(String lastname) {
-		Query query = em.createQuery("Select o FROM Owner o WHERE o.lastname=:lastname");
-		query.setParameter("lastname", lastname);
+		try {
+			Query query = em.createQuery("Select o FROM Owner o WHERE o.lastname=:lastname");
+			query.setParameter("lastname", lastname);
+			
+			Owner owner = (Owner)query.getSingleResult();
+			return owner;
+		} catch (Exception e) {
+			return null;
+		}
 		
-		Owner owner = (Owner)query.getSingleResult();
-		System.out.println("ID Owner called from getOwnerLastname(): "+owner.getId());
-		return owner;
 	}
 	
 	public Owner getOwner(long idOwner) {
@@ -208,12 +217,17 @@ public class HousesellingBean implements Houseselling {
 
 	@Override
 	public Location getLocation(String city) {
-		Query query = em.createQuery("Select c FROM Location c WHERE c.city=:city");
-		query.setParameter("city", city);
-		
-		Location location = (Location)query.getSingleResult();
-		System.out.println("ID House called from getLocation(): "+location.getId());
-		return location;
+		try {
+			Query query = em.createQuery("Select c FROM Location c WHERE c.city=:city");
+			query.setParameter("city", city);
+			
+			Location location = (Location)query.getSingleResult();
+			System.out.println("ID House called from getLocation(): "+location.getId());
+			return location;
+			
+		} catch (Exception e) {
+			return null;
+		}
 		
 	}
 

@@ -11,9 +11,11 @@
     	<div class="container">
 	    	
 	    		<h1>All Owners</h1>
+	    		
+	    		<p>Company cannot be deleted or edited</p>
      				
        				<h:form>
-       					<h:dataTable value="#{beanOwner.owners}" var="owner">
+       					<h:dataTable value="#{beanOwner.editableowners}" var="owner">
 					<h:column>
 						<f:facet name="header">Firstname</f:facet>
 						<h:outputText value="#{owner.firstname}" />
@@ -29,7 +31,8 @@
 					<h:column>
 						<f:facet name="header">Delete</f:facet>
 						<h:commandButton value="Delete"
-							action="#{beanOwner.deleteOwner(owner)}"></h:commandButton>
+							action="#{beanOwner.deleteOwner(owner)}">
+						</h:commandButton>
 					</h:column>					
 					<h:column>
 						<f:facet name="header">Update</f:facet>

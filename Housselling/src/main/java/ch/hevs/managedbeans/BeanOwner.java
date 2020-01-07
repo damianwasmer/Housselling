@@ -20,6 +20,7 @@ public class BeanOwner {
     private String language;
     private List<String> ownerNames;
     private List<Owner> owners;
+    private List<Owner> editableowners;
     private Owner ownerSelected = new Owner();
     
     @PostConstruct
@@ -41,17 +42,23 @@ public class BeanOwner {
 		
     	//Get owner names
 		this.ownerNames = new ArrayList<String>();
+		this.editableowners = new ArrayList<Owner>();
 		for (Owner owner : owners) {
 			this.ownerNames.add(owner.getLastname());
+			if(!owner.getLastname().equalsIgnoreCase("Company")) {
+				editableowners.add(owner);
+			}
 		}
     }
     
     //Getter and setter
     public List<String> getOwnerNames() {
+    	
+    	//Update the names of the Owners
     	owners = houseselling.getOwners();
     	ownerNames = new ArrayList<String>();
     	for (Owner owner : owners) {
-			this.ownerNames.add(owner.getLastname());
+			this.ownerNames.add(owner.getFirstname()+  " " + owner.getLastname());
 		}
     	
 		BeanOwner beanOwner = new BeanOwner();
@@ -60,7 +67,23 @@ public class BeanOwner {
 		return ownerNames;
 	}
     
-    public void setOwnerNames(List<String> ownerNames) {
+    public List<Owner> getEditableowners() {
+    	owners = houseselling.getOwners();
+    	editableowners = new ArrayList<Owner>();
+		//Update the list of Users
+		for (Owner owner : owners) {
+			if(!owner.getLastname().equalsIgnoreCase("Company")) {
+				editableowners.add(owner);
+			}
+		}
+		return editableowners;
+	}
+
+	public void setEditableowners(List<Owner> editableowners) {
+		this.editableowners = editableowners;
+	}
+
+	public void setOwnerNames(List<String> ownerNames) {
 		this.ownerNames = ownerNames;
 	}
 
@@ -129,7 +152,10 @@ public class BeanOwner {
 	//add owner
 	public String addOwner() {
     	
-    	houseselling.addOwner(firstname, lastname, language);
+		//Test, if the User always exist or not
+		if(houseselling.getOwnerEntity(firstname, lastname) == null) {
+			houseselling.addOwner(firstname, lastname, language);
+		}
     	
     	//Go to this page
     	return "showOwners";
@@ -139,6 +165,7 @@ public class BeanOwner {
 	//delete owner
 	public void deleteOwner(Owner owner){
 		houseselling.deleteOwner(owner);
+		editableowners.remove(owner);
 	}
 	
 	//edit owner

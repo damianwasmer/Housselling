@@ -8,7 +8,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import ch.hevs.businessobject.Location;
-import ch.hevs.businessobject.Owner;
 import ch.hevs.housesellingservice.Houseselling;
 
 public class BeanLocation {
@@ -31,10 +30,12 @@ public class BeanLocation {
     	// get locations
 		locations = houseselling.getLocations();
 		
+		//Add initialise Location
 		if(locations.size() == 0) {
-			houseselling.addLocation("Visp", "3030");
+			houseselling.addLocation("Sierre", "3030");
 		}
 		
+		//Get all Locations
 		if(locations==null){
 			locations = new ArrayList<>(); 
     	}
@@ -47,7 +48,6 @@ public class BeanLocation {
     }
     
     //Getter and Setter
-        
 	public List<String> getLocationNames() {
 		locations = houseselling.getLocations();
 		locationNames = new ArrayList<String>();
@@ -56,19 +56,22 @@ public class BeanLocation {
 		}
 		
 		BeanHouse beanHouse = new BeanHouse();
-		beanHouse.setCity(locationNames.get(0));
+		
+		if(locationNames.size() != 0) {
+			
+			beanHouse.setCity(locationNames.get(0));
+		} else {
+			beanHouse.setCity("");
+		}
+		
 		
 		return locationNames;
 		
 	}
 
-
-
 	public void setLocationNames(List<String> locationNames) {
 		this.locationNames = locationNames;
 	}
-
-
 
 	public Houseselling getHouseselling() {
 		return houseselling;
@@ -130,7 +133,11 @@ public class BeanLocation {
 
 	//Add location
 	public String addLocation() {
-    	houseselling.addLocation(location, postcode);
+		
+		//Test, if this location is always in the DB or not
+		if(houseselling.getLocation(location)==null){
+	    	houseselling.addLocation(location, postcode);
+		}
     	
     	return "showLocations";
     }

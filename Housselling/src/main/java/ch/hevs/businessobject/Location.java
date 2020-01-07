@@ -77,8 +77,10 @@ public class Location {
 		this.houses = houses;
 	}
 	
+	//Helper methods
 	public void addHouse(House house) {
 		houses.add(house);
+		house.setLocation(this);
 	}
 	
 	public void removeHouse(House house) {

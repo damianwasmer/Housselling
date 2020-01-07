@@ -30,7 +30,7 @@ public class BeanHouse  {
     private List<Villa> soldvillas;
     private List<Chalet> soldchalets;
     private String lastname;
-    private String city;
+    private String city = "";
     private int nrPools;
     private int nrSkirooms;
     private House houseSelected = new House();
@@ -56,8 +56,10 @@ public class BeanHouse  {
 			owners = new ArrayList<>();
 		}
 		
-		id = houseselling.getIdOwner("Company");
-		
+		if(owners.size()!= 0) {
+			id = houseselling.getIdOwner("Company");
+		}
+				
 		updateourList();
 		updatesoldList();
 		
@@ -133,7 +135,6 @@ public class BeanHouse  {
 
 
 	public List<House> getOurHouses() {
-		updateourList();
 		return ourHouses;
 	}
 
@@ -150,6 +151,7 @@ public class BeanHouse  {
 
 
 	public List<Chalet> getOurchalets() {
+		updateourList();
 		return ourchalets;
 	}
 
@@ -281,7 +283,12 @@ public class BeanHouse  {
 	
 	//edit house
 	public String editHouse() {
-		Owner owner = houseselling.getOwnerLastname(lastname);
+		String[]names = lastname.split(" ");
+		String firstname = names[0]; 
+		String lastnamer = names[1]; 
+		
+		Owner owner = houseselling.getOwnerEntity(firstname, lastnamer);
+		
 		Location location = houseselling.getLocation(city);
 		houseSelected.setOwner(owner);
 		houseSelected.setLocation(location);
@@ -294,13 +301,18 @@ public class BeanHouse  {
 			houseselling.editChalet(chalet);
 		}
 		
+		
 		return "welcomeHouseselling";
 	}
 
 	//Add chalet
 	public String addHouseChalet() {	
 		
-		Owner owner = houseselling.getOwnerLastname(lastname);
+		String[]names = lastname.split(" ");
+		String firstname = names[0]; 
+		String lastnamer = names[1]; 
+		
+		Owner owner = houseselling.getOwnerEntity(firstname, lastnamer);
 		Location location = houseselling.getLocation(city);
 		houseselling.addHouseChalet(houseDescription, street, number, price, location, owner, nrSkirooms);
 		
@@ -310,7 +322,11 @@ public class BeanHouse  {
 	//add villa
 	public String addHouseVilla() {	
 		
-		Owner owner = houseselling.getOwnerLastname(lastname);
+		String[]names = lastname.split(" ");
+		String firstname = names[0]; 
+		String lastnamer = names[1]; 
+		
+		Owner owner = houseselling.getOwnerEntity(firstname, lastnamer);
 		Location location = houseselling.getLocation(city);
 		houseselling.addHouseVilla(houseDescription, street, number, price, location, owner, nrPools);
 		
