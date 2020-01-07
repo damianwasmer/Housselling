@@ -22,7 +22,5 @@ public class Language {
 	public void setName(String languageName) {
 		this.languageName = languageName;
 	}
-	
-	
-	
+
 }

@@ -22,18 +22,13 @@
    <PROCESS-ITEM-OUTPUT ID="addVilla::#addVilla.xhtml" NAME="output5"
     PATH="/addVilla.xhtml" TARGET="rules:#addVilla.xhtml"
     TITLE="addVilla" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="showourHouses::#showourHouses.xhtml"
+    NAME="output6" PATH="/showourHouses.xhtml"
+    TARGET="rules:#showourHouses.xhtml" TITLE="showourHouses" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#transferHouse.xhtml"
-  PATH="/transferHouse.xhtml" SHAPE="256,264,50,25" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#showHouses.xhtml" PATH="/showHouses.xhtml"
-  SHAPE="280,208,50,25" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#addOwner.xhtml" PATH="/addOwner.xhtml"
-  SHAPE="456,64,50,25" model-entity="JSFProcessGroup" persistent="true"/>
- <PROCESS-ITEM NAME="rules:#addLocation.xhtml" PATH="/addLocation.xhtml"
-  SHAPE="464,112,50,25" model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#showOwners.xhtml" PATH="/showOwners.xhtml"
-  SHAPE="256,320,50,41" model-entity="JSFProcessGroup">
+  SHAPE="248,368,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#showOwners.xhtml:0" NAME="item"
    PATH="/showOwners.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="updateOwner::#updateOwner.xhtml"
@@ -41,11 +36,6 @@
     TARGET="rules:#updateOwner.xhtml" TITLE="updateOwner" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#showLocations.xhtml"
-  PATH="/showLocations.xhtml" SHAPE="264,408,50,25"
-  model-entity="JSFProcessGroup" persistent="true"/>
- <PROCESS-ITEM NAME="rules:#updateOwner.xhtml" PATH="/updateOwner.xhtml"
-  SHAPE="456,320,50,25" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#addChalet.xhtml" PATH="/addChalet.xhtml"
   SHAPE="240,56,50,25" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#addChalet.xhtml:0" NAME="item"
@@ -59,7 +49,7 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#addVilla.xhtml" PATH="/addVilla.xhtml"
-  SHAPE="240,120,50,57" model-entity="JSFProcessGroup">
+  SHAPE="240,144,50,57" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#addVilla.xhtml:0" NAME="item"
    PATH="/addVilla.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="addOwner::#addOwner.xhtml" NAME="output"
@@ -70,4 +60,29 @@
     TARGET="rules:#addLocation.xhtml" TITLE="addLocation" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#showLocations.xhtml"
+  PATH="/showLocations.xhtml" SHAPE="256,456,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#showLocations.xhtml:0" NAME="item"
+   PATH="/showLocations.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="updateLocation::#updateLocation.xhtml"
+    NAME="output" PATH="/updateLocation.xhtml"
+    TARGET="rules:#updateLocation.xhtml" TITLE="updateLocation" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#showHouses.xhtml" PATH="/showHouses.xhtml"
+  SHAPE="248,240,50,25" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#updateLocation.xhtml"
+  PATH="/updateLocation.xhtml" SHAPE="480,472,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#transferHouse.xhtml"
+  PATH="/transferHouse.xhtml" SHAPE="248,312,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#updateOwner.xhtml" PATH="/updateOwner.xhtml"
+  SHAPE="488,392,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#addOwner.xhtml" PATH="/addOwner.xhtml"
+  SHAPE="472,64,50,25" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#addLocation.xhtml" PATH="/addLocation.xhtml"
+  SHAPE="472,152,50,25" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#showourHouses.xhtml"
+  PATH="/showourHouses.xhtml" SHAPE="280,536,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
 </PROCESS>

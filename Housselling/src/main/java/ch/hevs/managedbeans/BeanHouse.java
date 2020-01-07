@@ -21,14 +21,21 @@ public class BeanHouse  {
     private String street;
     private int number;
     private double price;
+    private List<House> ourHouses;
+    private List<House> soldHouses;
     private List<Owner> owners;
     private List<Location> locations;
-    private List<Villa> villas;
-    private List<Chalet> chalets;
+    private List<Villa> ourvillas;
+    private List<Chalet> ourchalets;
+    private List<Villa> soldvillas;
+    private List<Chalet> soldchalets;
     private String lastname;
     private String city;
     private int nrPools;
     private int nrSkirooms;
+    private House houseSelected = new House();
+    private boolean isvilla;
+    private long id = 2;
     
     @PostConstruct
     public void initialize() throws NamingException {
@@ -49,23 +56,101 @@ public class BeanHouse  {
 			owners = new ArrayList<>();
 		}
 		
-		//get villas
-		villas = houseselling.getVillas();
-		if(villas==null) {
-			villas = new ArrayList<>();
-		}
+		id = houseselling.getIdOwner("Company");
 		
-		//get owners
-		chalets = houseselling.getChalets();
-		if(chalets==null) {
-			chalets = new ArrayList<>();
+		updateourList();
+		updatesoldList();
+		
+    }
+
+    //Update lists
+    public void updateourList() {
+    	ourHouses = houseselling.getourHouses(id);
+		ourvillas = new ArrayList<>();
+		ourchalets = new ArrayList<>();
+		for (House house : ourHouses){
+			if(house instanceof Villa) {
+				Villa villa = (Villa) house;
+				ourvillas.add(villa);
+			} else {
+				Chalet chalet = (Chalet) house;
+				ourchalets.add(chalet);
+			} 
+		}
+    }
+    
+    public void updatesoldList() {
+    	soldHouses = houseselling.getsoldHouses(id);
+		soldvillas = new ArrayList<>();
+		soldchalets = new ArrayList<>();
+		for (House house : soldHouses){
+			if(house instanceof Villa) {
+				Villa villa = (Villa) house;
+				soldvillas.add(villa);
+			} else {
+				Chalet chalet = (Chalet) house;
+				soldchalets.add(chalet);
+			} 
 		}
     }
 
-
+    
     //Getter & Setter    
 	public Houseselling getHouseselling() {
 		return houseselling;
+	}
+
+	public List<House> getSoldHouses() {
+		return soldHouses;
+	}
+
+
+	public void setSoldHouses(List<House> soldHouses) {
+		this.soldHouses = soldHouses;
+	}
+
+
+	public List<Villa> getSoldvillas() {
+		updatesoldList();
+		return soldvillas;
+	}
+
+
+	public void setSoldvillas(List<Villa> soldvillas) {
+		this.soldvillas = soldvillas;
+	}
+
+
+	public List<Chalet> getSoldchalets() {
+		updatesoldList();
+		return soldchalets;
+	}
+
+
+	public void setSoldchalets(List<Chalet> soldchalets) {
+		this.soldchalets = soldchalets;
+	}
+
+
+	public List<House> getOurHouses() {
+		updateourList();
+		return ourHouses;
+	}
+
+
+	public void setOurHouses(List<House> ourHouses) {
+		this.ourHouses = ourHouses;
+	}
+
+
+	public List<Villa> getOurvillas() {
+		updateourList();
+		return ourvillas;
+	}
+
+
+	public List<Chalet> getOurchalets() {
+		return ourchalets;
 	}
 
 
@@ -115,6 +200,7 @@ public class BeanHouse  {
 	}
 
 	public List<Owner> getOwners() {
+		owners = houseselling.getOwners();
 		return owners;
 	}
 
@@ -123,6 +209,7 @@ public class BeanHouse  {
 	}
 
 	public List<Location> getLocations() {
+		locations = houseselling.getLocations();
 		return locations;
 	}
 
@@ -154,52 +241,80 @@ public class BeanHouse  {
 		this.city = city;
 	}
 	
-	public List<Villa> getVillas() {
-		return villas;
+	public void setOurvillas(List<Villa> ourvillas) {
+		this.ourvillas = ourvillas;
+	}
+
+	public void setOurchalets(List<Chalet> ourchalets) {
+		this.ourchalets = ourchalets;
+	}
+
+	public boolean isIsvilla() {
+		return isvilla;
 	}
 
 
-	public void setVillas(List<Villa> villas) {
-		this.villas = villas;
+	public void setIsvilla(boolean isvilla) {
+		this.isvilla = isvilla;
 	}
 
 
-	public List<Chalet> getChalets() {
-		return chalets;
+	public House getHouseSelected() {
+		return houseSelected;
 	}
 
 
-	public void setChalets(List<Chalet> chalets) {
-		this.chalets = chalets;
+	public void setHouseSelected(House houseSelected) {
+		if(houseSelected instanceof Villa) {
+			isvilla = true;
+		} else {
+			isvilla = false;
+		}
+		this.houseSelected = houseSelected;
 	}
+
 
 	//Delete House
 	public void deleteHouse(House house) {
-		houseselling.deleteHouse(house);
+		houseselling.deleteHouse(house);	
+	}
+	
+	//edit house
+	public String editHouse() {
+		Owner owner = houseselling.getOwnerLastname(lastname);
+		Location location = houseselling.getLocation(city);
+		houseSelected.setOwner(owner);
+		houseSelected.setLocation(location);
 		
-		if(house instanceof Villa){
-			villas.remove(house); 
+		if(houseSelected instanceof Villa) {
+			Villa villa = (Villa) houseSelected;
+			houseselling.editVilla(villa);
+		} else {
+			Chalet chalet = (Chalet) houseSelected;
+			houseselling.editChalet(chalet);
 		}
-		if(house instanceof Chalet){
-			chalets.remove(house); 
-		}		
+		
+		return "showHouses";
 	}
 
 	//Add chalet
-	public void addHouseChalet() {	
+	public String addHouseChalet() {	
 		
 		Owner owner = houseselling.getOwnerLastname(lastname);
 		Location location = houseselling.getLocation(city);
 		houseselling.addHouseChalet(houseDescription, street, number, price, location, owner, nrSkirooms);
 		
+		return "showHouses";
 	}
 	
 	//add villa
-	public void addHouseVilla() {	
+	public String addHouseVilla() {	
 		
 		Owner owner = houseselling.getOwnerLastname(lastname);
 		Location location = houseselling.getLocation(city);
 		houseselling.addHouseVilla(houseDescription, street, number, price, location, owner, nrPools);
+		
+		return "showHouses";
 	
 	}
     

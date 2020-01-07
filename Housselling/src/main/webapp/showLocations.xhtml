@@ -27,6 +27,14 @@
 						<h:commandButton value="Delete"
 							action="#{beanLocation.deleteLocation(location)}"></h:commandButton>
 					</h:column>
+					<h:column>
+						<f:facet name="header">Update</f:facet>
+						<h:commandButton value="Update"
+							action="updateLocation">
+							<f:setPropertyActionListener
+								target="#{beanLocation.locationSelected}" value="#{location}" />
+						</h:commandButton>
+					</h:column>
 				</h:dataTable>
 				</h:form>
        				

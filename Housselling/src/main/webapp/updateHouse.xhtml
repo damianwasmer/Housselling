@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+    	<div class="container">
+	    	<h:form>
+	    		<h1>Edit House</h1>
+    		       	<h:outputLabel value="House Information:"></h:outputLabel>
+       				<br></br>
+       				<h:outputText value="Street"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanHouse.houseSelected.street}">
+							</h:inputText>
+							<br></br>
+       				<h:outputText value="Number"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanHouse.houseSelected.number}">
+					</h:inputText>
+					<br></br>
+					<h:outputText value="Description"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanHouse.houseSelected.description}">
+					</h:inputText>
+					<br></br>
+					<h:outputText value="Price"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanHouse.houseSelected.price}">
+					</h:inputText>
+					<br></br>
+					<h:outputText value="Number Pools" rendered="#{beanHouse.isvilla}"></h:outputText>
+       				<h:inputText size="20"
+								value="#{beanHouse.houseSelected.nrpools}"
+								rendered="#{beanHouse.isvilla}">
+					</h:inputText>
+					<h:outputText value="Number Skirooms" rendered="#{not beanHouse.isvilla}"></h:outputText>
+					 <h:inputText size="20"
+								value="#{beanHouse.houseSelected.nrskirooms}"
+								rendered="#{not beanHouse.isvilla}">
+					</h:inputText>
+					
+					<br></br>
+					<h:outputText value="Actual Location: "></h:outputText>
+					<h:outputText value="#{beanHouse.houseSelected.location.city}"></h:outputText>
+					<h:outputText value="#{beanHouse.houseSelected.location.postCode}"></h:outputText>
+					<br></br>
+					
+				<h:outputText value="Location: "></h:outputText>
+	        	<h:selectOneMenu value="#{beanHouse.city}">
+	        		<f:selectItems value="#{beanLocation.locationNames}"/>
+	        	</h:selectOneMenu>
+					
+					<h4>Sell house to:</h4>
+					<h:outputText value="Actual Owner: "></h:outputText>
+					<h:outputText value="#{beanHouse.houseSelected.owner.lastname}"></h:outputText>
+					<h:outputText value="#{beanHouse.houseSelected.owner.firstname}"></h:outputText>
+					<br></br>
+					<h:outputText value="Owner: "></h:outputText>
+	        	<h:selectOneMenu value="#{beanHouse.lastname}">
+	        		<f:selectItems value="#{beanOwner.ownerNames}"/>
+	        	</h:selectOneMenu>
+	        	<br></br>
+	        		
+	        	<br></br>
+					<h:commandButton value="Save changes"
+								action="#{beanHouse.editHouse}">
+					</h:commandButton>
+	    		</h:form>   	
+	    		<h:form>
+				<h:commandLink action="welcomeHouseselling">
+					<h:outputText value="Mainpage" />
+				</h:commandLink>
+			</h:form>
+    	</div>
+    </ui:define>
+</ui:composition>
+    
+</html>

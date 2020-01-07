@@ -18,12 +18,9 @@ public class BeanOwner {
     private String firstname;
     private String lastname;
     private String language;
-    private String updateFirstname;
-    private String updateLastname;
     private List<String> ownerNames;
     private List<Owner> owners;
     private Owner ownerSelected = new Owner();
-    private long id;
     
     @PostConstruct
     public void initialize() throws NamingException {
@@ -31,16 +28,19 @@ public class BeanOwner {
     	// use JNDI to inject reference to houseselling EJB
     	InitialContext ctx = new InitialContext();
 		houseselling = (Houseselling) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/HousesellingBean!ch.hevs.housesellingservice.Houseselling");
-			
+		
     	// get owners
 		owners = houseselling.getOwners();
+		if(owners.size() == 0) {
+			houseselling.addOwner("Company", "Houseselling", "German");
+		}
+		
 		if(owners==null){
     		owners = new ArrayList<>(); 
     	}
 		
     	//Get owner names
 		this.ownerNames = new ArrayList<String>();
-		this.ownerNames.add("-");
 		for (Owner owner : owners) {
 			this.ownerNames.add(owner.getLastname());
 		}
@@ -48,6 +48,15 @@ public class BeanOwner {
     
     //Getter and setter
     public List<String> getOwnerNames() {
+    	owners = houseselling.getOwners();
+    	ownerNames = new ArrayList<String>();
+    	for (Owner owner : owners) {
+			this.ownerNames.add(owner.getLastname());
+		}
+    	
+		BeanOwner beanOwner = new BeanOwner();
+		beanOwner.setLastname(ownerNames.get(0));
+    	
 		return ownerNames;
 	}
     
@@ -79,6 +88,7 @@ public class BeanOwner {
 
 
 	public List<Owner> getOwners() {
+		owners = houseselling.getOwners();
 		return owners;
     }
     
@@ -107,26 +117,6 @@ public class BeanOwner {
 	public void setHouseselling(Houseselling houseselling) {
 		this.houseselling = houseselling;
 	}
-	
-	
-	public String getUpdateFirstname() {
-		return updateFirstname;
-	}
-
-
-	public void setUpdateFirstname(String updateFirstname) {
-		this.updateFirstname = updateFirstname;
-	}
-
-
-	public String getUpdateLastname() {
-		return updateLastname;
-	}
-
-
-	public void setUpdateLastname(String updateLastname) {
-		this.updateLastname = updateLastname;
-	}
 
 	public Owner getOwnerSelected() {
 		return ownerSelected;
@@ -134,8 +124,6 @@ public class BeanOwner {
 
 	public void setOwnerSelected(Owner ownerSelected) {
 		this.ownerSelected = ownerSelected;
-		id=ownerSelected.getId();
-		System.out.println(ownerSelected.getFirstname() + " " + ownerSelected.getId());
 	}
 
 	//add owner
@@ -154,14 +142,13 @@ public class BeanOwner {
 	}
 	
 	//edit owner
-	public void editOwner() {
-		/*Owner owner = houseselling.getOwner(id);
-		owner.setFirstname(ownerSelected.getFirstname());
-		owner.setLastname(ownerSelected.getLastname());*/
-		
+	public String editOwner() {
 		houseselling.editOwner(ownerSelected);
+		
+		//For testing
 		System.out.println(ownerSelected.getFirstname() + " " + ownerSelected.getLastname() + " " + ownerSelected.getId());
 
+		return "showOwners";
 	}
 	
 	//update id owner
@@ -174,7 +161,4 @@ public class BeanOwner {
 	public String toString() {
 		return " firstname" + " " + "lastname";
 	}
-	
-	
-
 }

@@ -10,23 +10,19 @@
     <ui:define name="content">
     	<div class="container">
 	    	<h:form>
-	    		<h1>Edit Owner</h1>
-    		       	<h:outputLabel value="Owner Information:"></h:outputLabel>
+	    		<h1>Edit Location</h1>
+    		       	<h:outputLabel value="Location Information:"></h:outputLabel>
        				<br></br>
-       				<h:outputText value="Firstname"></h:outputText>
+       				<h:outputText value="City"></h:outputText>
        				<h:inputText size="20"
-								value="#{beanOwner.ownerSelected.firstname}">
+								value="#{beanLocation.locationSelected.city}">
 							</h:inputText>
        				<h:outputText value="Lastname"></h:outputText>
        				<h:inputText size="20"
-								value="#{beanOwner.ownerSelected.lastname}">
-					</h:inputText>
-					<h:outputText value="Language"></h:outputText>
-       				<h:inputText size="20"
-								value="#{beanOwner.ownerSelected.languageName}">
+								value="#{beanLocation.locationSelected.postCode}">
 					</h:inputText>
 					<h:commandButton value="Save changes"
-								action="#{beanOwner.editOwner}">
+								action="#{beanLocation.editLocation}">
 					</h:commandButton>
 	    	</h:form>   	
 	    	

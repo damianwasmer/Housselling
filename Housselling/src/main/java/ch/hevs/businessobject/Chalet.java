@@ -1,8 +1,10 @@
 package ch.hevs.businessobject;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Chalet")
 public class Chalet extends House{
 	private int nrskirooms;
 	

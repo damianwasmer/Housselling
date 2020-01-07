@@ -10,10 +10,10 @@
     <ui:define name="content">
     	<div class="container">
 	    	
-	    		<h1>All sold Chalets</h1>
+	    		<h1>All Chalets of us</h1>
      				
        				<h:form>
-       					<h:dataTable value="#{beanHouse.soldchalets}" var="chalet">
+       					<h:dataTable value="#{beanHouse.ourchalets}" var="chalet">
 					<h:column>
 						<f:facet name="header">Street</f:facet>
 						<h:outputText value="#{chalet.street}" />
@@ -50,14 +50,27 @@
 						<f:facet name="header">Lastname</f:facet>
 						<h:outputText value="#{chalet.owner.lastname}" />
 					</h:column>
+					<h:column>
+						<f:facet name="header">Delete</f:facet>
+						<h:commandButton value="Delete"
+							action="#{beanHouse.deleteHouse(chalet)}"></h:commandButton>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Update / Sell</f:facet>
+						<h:commandButton value="Update"
+							action="updateHouse">
+							<f:setPropertyActionListener
+								target="#{beanHouse.houseSelected}" value="#{chalet}" />
+						</h:commandButton>
+					</h:column>				
 				</h:dataTable>
 				</h:form>
 				
 				<br></br>
-				<h1>All sold Villas</h1>
+				<h1>All Villas of us</h1>
      				
        				<h:form>
-       					<h:dataTable value="#{beanHouse.soldvillas}" var="villa">
+       					<h:dataTable value="#{beanHouse.ourvillas}" var="villa">
 					<h:column>
 						<f:facet name="header">Street</f:facet>
 						<h:outputText value="#{villa.street}" />
@@ -93,7 +106,20 @@
 					<h:column>
 						<f:facet name="header">Lastname</f:facet>
 						<h:outputText value="#{villa.owner.lastname}" />
-					</h:column>			
+					</h:column>
+					<h:column>
+						<f:facet name="header">Delete</f:facet>
+						<h:commandButton value="Delete"
+							action="#{beanHouse.deleteHouse(villa)}"></h:commandButton>
+					</h:column>	
+					<h:column>
+						<f:facet name="header">Update / Sell</f:facet>
+						<h:commandButton value="Update"
+							action="updateHouse">
+							<f:setPropertyActionListener
+								target="#{beanHouse.houseSelected}" value="#{villa}" />
+						</h:commandButton>
+					</h:column>				
 				</h:dataTable>
 				</h:form>
 				

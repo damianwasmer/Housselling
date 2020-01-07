@@ -30,14 +30,16 @@ public interface Houseselling {
 	Location getLocation(String location);
 	void addLocation(String location, String postcode);
 	void deleteLocation(Location location);
+	void editLocation(Location location);
 	
 	//House
-	void addHouse(String houseDescription, String street, int number, double price, Location location, Owner owner);
 	House getHouse(String HouseDescription, String lastnameOwner);
 	List<House> getHouseListFromOwner(String firstname, String lastname);
 	void addHouseChalet(String houseDescription, String street, int number, double price, Location location, Owner owner, int nrRooms);
 	void addHouseVilla(String houseDescription, String street, int number, double price, Location location, Owner owner, int nrPools);
-	List<Villa>getVillas();
-	List<Chalet>getChalets();
+	List<House>getourHouses(Long id);
+	List<House>getsoldHouses(Long id);
 	void deleteHouse(House house);
+	void editVilla(Villa villa);
+	void editChalet(Chalet chalet);
 }

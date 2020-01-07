@@ -14,7 +14,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Table(name="House")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class House {
 
 	@Id

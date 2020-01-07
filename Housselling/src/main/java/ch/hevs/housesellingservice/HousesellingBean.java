@@ -63,8 +63,12 @@ public class HousesellingBean implements Houseselling {
 	@Override
 	public void deleteOwner(Owner owner) {
 		// TODO Auto-generated method stub
-		Owner ownerdelete = em.merge(owner);
-		em.remove(ownerdelete);
+		if(owner.getFirstname().equalsIgnoreCase("Sellhouses") && owner.getLastname().equalsIgnoreCase("Company")) {
+			return;
+		} else {
+			Owner ownerdelete = em.merge(owner);
+			em.remove(ownerdelete);
+		}
 	}
 
 	@Override
@@ -89,6 +93,15 @@ public class HousesellingBean implements Houseselling {
 		return (Owner) query.getSingleResult();
 	}
 	
+	@Override
+	public long getIdOwner(String lastname) {
+		Query query = em.createQuery("FROM Owner o WHERE o.lastname=:lastname");
+		query.setParameter("lastname", lastname);
+		
+		Owner owner = (Owner)query.getSingleResult();
+		return owner.getId();
+	}
+	
 	//House------------------------------------------
 	@Override
 	public House getHouse(String HouseDescription, String lastnameOwner) {
@@ -110,19 +123,6 @@ public class HousesellingBean implements Houseselling {
 		return (List<House>) query.getResultList();
 	}
 
-	
-	@Override
-	public void addHouse(String houseDescription, String street, int number, double price, Location location, Owner owner) {
-		House h = new House();
-		h.setDescription(houseDescription);
-		h.setStreet(street);
-		h.setNumber(number);
-		h.setPrice(price);
-		h.setLocation(location);
-		h.setOwner(owner);
-			
-		em.persist(h);
-	}
 	
 	//Add chalet
 	@Override
@@ -163,16 +163,35 @@ public class HousesellingBean implements Houseselling {
 		em.remove(housedelete);
 		
 	}
-	
-	@Override
-	public List<Villa> getVillas() {
-		// TODO Auto-generated method stub
-		return em.createQuery("FROM Villa").getResultList();
-	}
 
 	@Override
-	public List<Chalet> getChalets() {
-		return em.createQuery("FROM Chalet").getResultList();
+	public List<House> getourHouses(Long id) {
+		Query query = em.createQuery("Select c.houses FROM Owner c WHERE c.id=:id");
+		query.setParameter("id", id);
+		
+		return (List<House>) query.getResultList();
+		//return em.createQuery("FROM Chalet").getResultList();
+	}
+	
+	@Override
+	public List<House> getsoldHouses(Long id) {
+		Query query = em.createQuery("Select c.houses FROM Owner c WHERE c.id!=:id");
+		query.setParameter("id", id);
+		
+		return (List<House>) query.getResultList();
+		//return em.createQuery("FROM Chalet").getResultList();
+	}
+	
+	@Override
+	public void editVilla(Villa villa) {
+		// TODO Auto-generated method stub
+		em.merge(villa);
+	}
+	
+	@Override
+	public void editChalet(Chalet chalet) {
+		// TODO Auto-generated method stub
+		em.merge(chalet);
 	}
 	
 	//Location---------------------------------------
@@ -189,15 +208,6 @@ public class HousesellingBean implements Houseselling {
 		l.setCity(city);
 		l.setPostCode(postcode);
 		em.persist(l);
-	}
-
-	@Override
-	public long getIdOwner(String lastname) {
-		Query query = em.createQuery("FROM Owner o WHERE o.lastname=:lastname");
-		query.setParameter("lastname", lastname);
-		
-		Owner owner = (Owner)query.getSingleResult();
-		return owner.getId();
 	}
 
 	@Override
@@ -227,6 +237,11 @@ public class HousesellingBean implements Houseselling {
 		
 	}
 
+	@Override
+	public void editLocation(Location location) {
+		// TODO Auto-generated method stub
+		em.merge(location);
 		
+	}
 
 }

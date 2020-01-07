@@ -4,17 +4,17 @@
  <managed-bean>
   <managed-bean-name>beanOwner</managed-bean-name>
   <managed-bean-class>ch.hevs.managedbeans.BeanOwner</managed-bean-class>
-  <managed-bean-scope>view</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
   <managed-bean-name>beanHouse</managed-bean-name>
   <managed-bean-class>ch.hevs.managedbeans.BeanHouse</managed-bean-class>
-  <managed-bean-scope>view</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
   <managed-bean-name>beanLocation</managed-bean-name>
   <managed-bean-class>ch.hevs.managedbeans.BeanLocation</managed-bean-class>
-  <managed-bean-scope>view</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
   <display-name>/welcomeHouseselling.xhtml</display-name>
@@ -42,6 +42,10 @@
   <navigation-case>
    <from-outcome>addVilla</from-outcome>
    <to-view-id>/addVilla.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>showourHouses</from-outcome>
+   <to-view-id>/showourHouses.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -71,6 +75,13 @@
   <navigation-case>
    <from-outcome>addLocation</from-outcome>
    <to-view-id>/addLocation.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/showLocations.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>updateLocation</from-outcome>
+   <to-view-id>/updateLocation.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <application/>
