@@ -26,7 +26,7 @@ public class Villa extends House {
 	}
 	
 	
-
+	//nrPools
 	public int getNrpools() {
 		return nrpools;
 	}

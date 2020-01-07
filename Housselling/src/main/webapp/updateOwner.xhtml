@@ -13,17 +13,20 @@
 	    		<h1>Edit Owner</h1>
     		       	<h:outputLabel value="Owner Information:"></h:outputLabel>
        				<br></br>
-       				<h:outputText value="Firstname"></h:outputText>
+       				<h:outputText value="Firstname:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanOwner.ownerSelected.firstname}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
 							</h:inputText>
-       				<h:outputText value="Lastname"></h:outputText>
+       				<h:outputText value="Lastname:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanOwner.ownerSelected.lastname}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
 					</h:inputText>
-					<h:outputText value="Language"></h:outputText>
+					<h:outputText value="Language:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanOwner.ownerSelected.languageName}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
 					</h:inputText>
 					<h:commandButton value="Save changes"
 								action="#{beanOwner.editOwner}">

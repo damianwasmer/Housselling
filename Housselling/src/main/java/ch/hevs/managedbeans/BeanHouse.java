@@ -294,7 +294,7 @@ public class BeanHouse  {
 			houseselling.editChalet(chalet);
 		}
 		
-		return "showHouses";
+		return "welcomeHouseselling";
 	}
 
 	//Add chalet
@@ -304,7 +304,7 @@ public class BeanHouse  {
 		Location location = houseselling.getLocation(city);
 		houseselling.addHouseChalet(houseDescription, street, number, price, location, owner, nrSkirooms);
 		
-		return "showHouses";
+		return "welcomeHouseselling";
 	}
 	
 	//add villa
@@ -314,7 +314,7 @@ public class BeanHouse  {
 		Location location = houseselling.getLocation(city);
 		houseselling.addHouseVilla(houseDescription, street, number, price, location, owner, nrPools);
 		
-		return "showHouses";
+		return "welcomeHouseselling";
 	
 	}
     

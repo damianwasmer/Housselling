@@ -27,42 +27,33 @@ public class HousesellingBean implements Houseselling {
 	//Owner-------------------------------------
 	@Override
 	public List<Owner> getOwners() {
-		// TODO Auto-generated method stub
 		return em.createQuery("FROM Owner").getResultList();
 	}
 	
 	@Override
 	public void addOwner(String firstname, String lastname, String language) {
-		// TODO Auto-generated method stub
 		Owner o = new Owner(firstname,lastname,language);
-				
 		em.persist(o);
 	}
 
 	@Override
 	public Owner getHouseOwner(String firstname, String lastname) {
-		// TODO Auto-generated method stub
 		Query query = em.createQuery("select h.owner from House h where h.firstname = :firstname && h.lastname = :lastname"); 
 		query.setParameter("firstname", firstname);
 		query.setParameter("lastname", lastname); 
-		
-		
 		return (Owner)query.getSingleResult(); 
 	}
 
 	@Override
 	public Owner getOwnerEntity(String firstname, String lastname) {
-		// TODO Auto-generated method stub
 		Query query = em.createQuery("select o from Owner o where o.firstname = :firstname and o.lastname = :lastname");
 		query.setParameter("firstname", firstname);
 		query.setParameter("lastname", lastname); 
-		
 		return (Owner)query.getSingleResult(); 
 	}
 
 	@Override
 	public void deleteOwner(Owner owner) {
-		// TODO Auto-generated method stub
 		if(owner.getFirstname().equalsIgnoreCase("Sellhouses") && owner.getLastname().equalsIgnoreCase("Company")) {
 			return;
 		} else {
@@ -73,7 +64,6 @@ public class HousesellingBean implements Houseselling {
 
 	@Override
 	public void editOwner(Owner owner) {
-		// TODO Auto-generated method stub
 		em.merge(owner);
 	}
 	
@@ -158,7 +148,6 @@ public class HousesellingBean implements Houseselling {
 	
 	@Override
 	public void deleteHouse(House house) {
-		// TODO Auto-generated method stub
 		House housedelete = em.merge(house);
 		em.remove(housedelete);
 		
@@ -168,42 +157,34 @@ public class HousesellingBean implements Houseselling {
 	public List<House> getourHouses(Long id) {
 		Query query = em.createQuery("Select c.houses FROM Owner c WHERE c.id=:id");
 		query.setParameter("id", id);
-		
 		return (List<House>) query.getResultList();
-		//return em.createQuery("FROM Chalet").getResultList();
 	}
 	
 	@Override
 	public List<House> getsoldHouses(Long id) {
 		Query query = em.createQuery("Select c.houses FROM Owner c WHERE c.id!=:id");
 		query.setParameter("id", id);
-		
 		return (List<House>) query.getResultList();
-		//return em.createQuery("FROM Chalet").getResultList();
 	}
 	
 	@Override
 	public void editVilla(Villa villa) {
-		// TODO Auto-generated method stub
 		em.merge(villa);
 	}
 	
 	@Override
 	public void editChalet(Chalet chalet) {
-		// TODO Auto-generated method stub
 		em.merge(chalet);
 	}
 	
 	//Location---------------------------------------
 	@Override
 	public List<Location> getLocations() {
-		// TODO Auto-generated method stub
 		return em.createQuery("FROM Location").getResultList();
 	}
 
 	@Override
 	public void addLocation(String city, String postcode) {
-		// TODO Auto-generated method stub
 		Location l = new Location();
 		l.setCity(city);
 		l.setPostCode(postcode);
@@ -221,7 +202,6 @@ public class HousesellingBean implements Houseselling {
 
 	@Override
 	public void deleteLocation(Location location) {
-		// TODO Auto-generated method stub
 		Location locationdelete = em.merge(location);
 		em.remove(locationdelete);
 	}
@@ -239,9 +219,7 @@ public class HousesellingBean implements Houseselling {
 
 	@Override
 	public void editLocation(Location location) {
-		// TODO Auto-generated method stub
 		em.merge(location);
-		
 	}
 
 }

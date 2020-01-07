@@ -25,7 +25,7 @@ public class Chalet extends House{
 	}
 	
 	
-
+	//skirooms
 	public int getNrskirooms() {
 		return nrskirooms;
 	}

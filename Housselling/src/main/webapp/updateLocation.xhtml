@@ -13,13 +13,15 @@
 	    		<h1>Edit Location</h1>
     		       	<h:outputLabel value="Location Information:"></h:outputLabel>
        				<br></br>
-       				<h:outputText value="City"></h:outputText>
+       				<h:outputText value="City:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanLocation.locationSelected.city}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
 							</h:inputText>
-       				<h:outputText value="Lastname"></h:outputText>
+       				<h:outputText value="Postcode:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanLocation.locationSelected.postCode}">
+					<f:convertNumber integerOnly="true" type="number" />
 					</h:inputText>
 					<h:commandButton value="Save changes"
 								action="#{beanLocation.editLocation}">

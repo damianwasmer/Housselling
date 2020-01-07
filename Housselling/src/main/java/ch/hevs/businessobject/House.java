@@ -99,7 +99,7 @@ public class House {
 		this.description = description;
 	}
 
-
+	//owner
 	public Owner getOwner() {
 		return owner;
 	}
@@ -108,6 +108,7 @@ public class House {
 		this.owner = owner;
 	}
 
+	//location
 	public Location getLocation() {
 		return location;
 	}
@@ -116,6 +117,7 @@ public class House {
 		this.location = location;
 	}
 
+	//toString
 	@Override
 	public String toString() {
 		return "House [id=" + id + ", street=" + street + ", number=" + number + ", description=" + description

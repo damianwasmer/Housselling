@@ -156,9 +156,5 @@ public class BeanOwner {
 		ownerSelected = houseselling.getOwner((Long)event.getNewValue());
 	}
 	
-	//toString
-	@Override
-	public String toString() {
-		return " firstname" + " " + "lastname";
-	}
+
 }

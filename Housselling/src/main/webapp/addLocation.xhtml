@@ -11,16 +11,17 @@
     	<div class="container">
 	    	<h:form>
 	    		<h1>Add new Location</h1>
-    		       	<h:outputLabel value="House Information:"></h:outputLabel>
+    		       	<h:outputLabel value="House Information:&#160;"></h:outputLabel>
        				<br></br>
-       				<h:outputText value="City:"></h:outputText>
+       				<h:outputText value="City:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanLocation.location}">
 								<f:validateRegex pattern="[A-Z][a-z]*" />
 							</h:inputText>
-       				<h:outputText value="Postcode:"></h:outputText>
+       				<h:outputText value="Postcode:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanLocation.postcode}">
+					<f:convertNumber integerOnly="true" type="number" />
 								
 					</h:inputText>
 					<h:commandButton value="Add Location"

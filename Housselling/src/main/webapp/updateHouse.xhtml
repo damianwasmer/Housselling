@@ -13,35 +13,41 @@
 	    		<h1>Edit House</h1>
     		       	<h:outputLabel value="House Information:"></h:outputLabel>
        				<br></br>
-       				<h:outputText value="Street"></h:outputText>
+       				<h:outputText value="Street:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanHouse.houseSelected.street}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
 							</h:inputText>
 							<br></br>
-       				<h:outputText value="Number"></h:outputText>
+       				<h:outputText value="Number:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanHouse.houseSelected.number}">
+					<f:convertNumber integerOnly="true" type="number" />
 					</h:inputText>
 					<br></br>
-					<h:outputText value="Description"></h:outputText>
+					<h:outputText value="Description:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanHouse.houseSelected.description}">
+								<f:validateRegex pattern="[A-Z][a-z]*" />
 					</h:inputText>
 					<br></br>
-					<h:outputText value="Price"></h:outputText>
+					<h:outputText value="Price:&#160;"></h:outputText>
        				<h:inputText size="20"
-								value="#{beanHouse.houseSelected.price}">
+								value="#{beanHouse.houseSelected.price}"
+								converterMessage="digits only">
 					</h:inputText>
 					<br></br>
-					<h:outputText value="Number Pools" rendered="#{beanHouse.isvilla}"></h:outputText>
+					<h:outputText value="Number Pools:&#160;" rendered="#{beanHouse.isvilla}"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanHouse.houseSelected.nrpools}"
 								rendered="#{beanHouse.isvilla}">
+					<f:convertNumber integerOnly="true" type="number" />
 					</h:inputText>
-					<h:outputText value="Number Skirooms" rendered="#{not beanHouse.isvilla}"></h:outputText>
+					<h:outputText value="Number Skirooms:&#160;" rendered="#{not beanHouse.isvilla}"></h:outputText>
 					 <h:inputText size="20"
 								value="#{beanHouse.houseSelected.nrskirooms}"
 								rendered="#{not beanHouse.isvilla}">
+					<f:convertNumber integerOnly="true" type="number" />
 					</h:inputText>
 					
 					<br></br>

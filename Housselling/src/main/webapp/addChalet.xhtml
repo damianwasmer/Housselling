@@ -18,27 +18,28 @@
        				<br></br>
     		
 	        				       	
-       				<h:outputText value="House Description"></h:outputText>
+       				<h:outputText value="House Description:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanHouse.houseDescription}">
 								<f:validateRegex pattern="[A-Z][a-z]*" />
 							</h:inputText>
 					<br></br>
 							
-       				<h:outputText value="Street"></h:outputText>
+       				<h:outputText value="Street:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanHouse.street}">
 								<f:validateRegex pattern="[A-Z][a-z]*" />
 					</h:inputText>
 					<br></br>
 					
-					<h:outputText value="Number"></h:outputText>
+					<h:outputText value="Number:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanHouse.number}">
+					<f:convertNumber integerOnly="true" type="number" />
 					</h:inputText>
 					<br></br>
 					
-					<h:outputText value="Price"></h:outputText>
+					<h:outputText value="Price:&#160;"></h:outputText>
        				<h:inputText size="20"
        				       		converterMessage="digits only"
 								value="#{beanHouse.price}">
@@ -46,9 +47,10 @@
 					</h:inputText>
 					<br></br>
 					
-					<h:outputText value="Number Skirooms"></h:outputText>
+					<h:outputText value="Number Skirooms:&#160;"></h:outputText>
        				<h:inputText size="20"
 								value="#{beanHouse.nrSkirooms}">
+					<f:convertNumber integerOnly="true" type="number" />
 								
 					</h:inputText>
 					<br></br>

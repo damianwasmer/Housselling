@@ -28,7 +28,7 @@ public class BeanLocation {
     	InitialContext ctx = new InitialContext();
 		houseselling = (Houseselling) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/HousesellingBean!ch.hevs.housesellingservice.Houseselling");		
 		
-    	// get owners
+    	// get locations
 		locations = houseselling.getLocations();
 		
 		if(locations.size() == 0) {

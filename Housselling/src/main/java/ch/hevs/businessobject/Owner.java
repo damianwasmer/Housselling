@@ -51,7 +51,12 @@ public class Owner {
 	public long getId() {
 		return id;
 	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
 
+	//languageName
 	public String getLanguageName() {
 		return language.getName();
 	}
@@ -59,10 +64,7 @@ public class Owner {
 	public void setLanguageName(String languageName) {
 		language.setName(languageName);
 	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
+	
 
 	//lastname
 	public String getLastname() {
